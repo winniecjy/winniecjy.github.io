@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>vuepress搭建 | Jinny Cai&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍 vuepress支持html、md、vue。这些格式最终都会被转换成vue组件：markdown -&amp;gt; html -&amp;gt; vue。  搭建 初始化：npm init 安装vuepress全局安装-g，在已有的项目中安装-d。    1234567891011121314151617# 全局安装npm install -g vuepress # 创建一个专门的docs目录存放md文件">
+<meta name="keywords" content="小项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vuepress搭建">
+<meta property="og:url" content="http://yoursite.com/2018/08/10/vuepress搭建/index.html">
+<meta property="og:site_name" content="Jinny Cai&#39;s Blog">
+<meta property="og:description" content="介绍 vuepress支持html、md、vue。这些格式最终都会被转换成vue组件：markdown -&amp;gt; html -&amp;gt; vue。  搭建 初始化：npm init 安装vuepress全局安装-g，在已有的项目中安装-d。    1234567891011121314151617# 全局安装npm install -g vuepress # 创建一个专门的docs目录存放md文件">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-10T11:13:49.855Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vuepress搭建">
+<meta name="twitter:description" content="介绍 vuepress支持html、md、vue。这些格式最终都会被转换成vue组件：markdown -&amp;gt; html -&amp;gt; vue。  搭建 初始化：npm init 安装vuepress全局安装-g，在已有的项目中安装-d。    1234567891011121314151617# 全局安装npm install -g vuepress # 创建一个专门的docs目录存放md文件">
+  
+    <link rel="alternate" href="/atom.xml" title="Jinny Cai&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jinny Cai&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vuepress搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/10/vuepress搭建/" class="article-date">
+  <time datetime="2018-08-10T11:13:12.000Z" itemprop="datePublished">2018-08-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vuepress搭建
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ol>
+<li><code>vuepress</code>支持html、md、vue。这些格式最终都会被转换成vue组件：<code>markdown -&gt; html -&gt; vue</code>。</li>
+</ol>
+<h2 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h2><ol>
+<li>初始化：<code>npm init</code></li>
+<li><p>安装vuepress<br><em>全局安装<code>-g</code>，在已有的项目中安装<code>-d</code>。</em>  </p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 全局安装</span></span><br><span class="line">npm install -g vuepress</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 创建一个专门的docs目录存放md文件</span></span><br><span class="line"><span class="comment"># mkdir docs</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 创建一个 markdown 文件</span></span><br><span class="line"><span class="comment"># echo '# Hello Vuepress' &gt; docs/README.md</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'# Hello Vuepress'</span> &gt; README.md</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 编写文档</span></span><br><span class="line"><span class="comment"># npx vuepress dev docs</span></span><br><span class="line">npx vuepress dev</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 构建</span></span><br><span class="line"><span class="comment"># npx vuepress build docs</span></span><br><span class="line">npx vuepress build</span><br></pre></td></tr></table></figure>
+<p> 为了防止以后忘记命令，建议在<code>package.json</code>中添加<code>scripts</code>脚本。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;scripts&quot;: &#123;</span><br><span class="line">        &quot;dev&quot;: &quot;vuepress dev docs&quot;,</span><br><span class="line">        &quot;build&quot;: &quot;vuepress build docs&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在上面两步之后就可以在本地查看部署效果了。现在还只是一个简单的markdown界面显示。做到像vuepress官网一样的界面还需要在<code>.vuepress</code>文件下添加配置文件<code>config.js</code>。以下代码简单的添加了标题、头部导航和侧边导航，具体可参照<a href="https://vuepress.docschina.org/config/" target="_blank" rel="noopener">官方文档</a>。  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    base: &apos;/gh-pages/&apos;, // github仓库名</span><br><span class="line">    title: &apos;Hello VuePress&apos;, // 标题</span><br><span class="line">    description: &apos;Justing do it!&apos;,</span><br><span class="line"> </span><br><span class="line">    // 顶部导航栏nav</span><br><span class="line">    themeConfig: &#123;</span><br><span class="line">        nav: [</span><br><span class="line">            &#123;text: &apos;指南&apos;, link: &apos;/guide/&apos;&#125;,</span><br><span class="line">            &#123;text: &apos;配置参考&apos;, link: &apos;/config/&apos;&#125;,</span><br><span class="line">            &#123;text: &apos;默认主题配置&apos;, link: &apos;/default-theme-config/&apos;&#125;,</span><br><span class="line">            &#123;text: &apos;Github&apos;, link: &apos;https://github.com/docschina/vuepress/&apos;&#125;,</span><br><span class="line">        ],</span><br><span class="line"> </span><br><span class="line">        // 左侧sidebar</span><br><span class="line">        sidebar: [</span><br><span class="line">            &apos;/&apos;,</span><br><span class="line">            &apos;pageA.html&apos;,</span><br><span class="line">            &apos;pageB.html&apos;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为了让这个系统能够在外部访问，可以借助github。</p>
+<ul>
+<li>建立好一个github仓库，如：<a href="https://github.com/jinglecjy/technical-docs，在`config.js`文件中添加`base" target="_blank" rel="noopener">https://github.com/jinglecjy/technical-docs，在`config.js`文件中添加`base</a>: [仓库名]`  </li>
+<li><p>同步远程仓库到本地输出目录下<code>.vuepress/dist</code>  </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd .vuepress/dist</span><br><span class="line">git init</span><br><span class="line">git pull -f</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将<code>dist</code>目录下的文件上传到github的gh-pages分支下<code>.vuepress/</code>  </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add -A</span><br><span class="line">git commit -m &apos;deploy&apos;</span><br><span class="line">git push -f git@github.com:jinglecjy/technical-docs.git master:gh-pages</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在远程仓库<code>Settings -&gt; Github Pages -&gt; Source</code>设置为<code>gh-pages branch</code>，点击save。</p>
+</li>
+<li>这样就大功告成啦，效果：<a href="https://jinglecjy.github.io/technical-docs/" target="_blank" rel="noopener">DEMO</a>。<h2 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h2></li>
+</ul>
+</li>
+<li>不使用<code>README.md</code>作为名字时，按照官方文档部署网站之后总是跳转到默认的404页面？<br>README.md 默认生成index.html为默认首页，不可更改。 </li>
+<li>注意文件重新生成之后需要重新部署个git仓库，并上传才能更新文档，因为dist文件夹都是删除重新生成的。<code>vuepress</code>比较适合不需要经常修改的静态文档。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/10/vuepress搭建/" data-id="cjknw8vm30001xd7oq8csqj92" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小项目/">小项目</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/08/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/小项目/">小项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/小项目/" style="font-size: 10px;">小项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/10/vuepress搭建/">vuepress搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Cai Jieying<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
