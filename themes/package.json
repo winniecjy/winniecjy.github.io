@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "hexo-renderer-pug": "^0.0.5",
+    "hexo-renderer-sass": "^0.3.2"
+  }
+}
