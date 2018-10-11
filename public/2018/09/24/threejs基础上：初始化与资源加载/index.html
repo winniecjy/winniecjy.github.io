@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="前端"><title>threejs基础上：初始化与资源加载 | Jinny Cai's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">threejs基础上：初始化与资源加载</h1><a id="logo" href="/.">Jinny Cai's Blog</a><p class="description">生气了，一顿饭哄不好的那种。恩，要两顿。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">threejs基础上：初始化与资源加载</h1><div class="post-meta">Sep 24, 2018<span> | </span><span class="category"><a href="/categories/notes/">notes</a></span></div><div class="post-content"><p>Three.js是一个用于简化webGL编程的3D库，即使在不支持webGL的环境下也能做到优雅降级，以下教程将围绕构建这个地球DEMO来展开。   </p>
+<p>ThreeJs中最主要的有三个对象场景（scene）、相机（camera）、渲染器（renderer）。scene是布景空间，camera是拍摄镜头，render是用来将scene和camera生成的场景渲染到屏幕上，有了这三个对象才能将场景渲染到网页上去。   </p>
+<hr>
+<h3 id="初始化对象"><a href="#初始化对象" class="headerlink" title="初始化对象"></a>初始化对象</h3><h4 id="1、初始化场景scene"><a href="#1、初始化场景scene" class="headerlink" title="1、初始化场景scene"></a>1、初始化场景scene</h4><p>场景相当于是一个容器来容纳所有的物体，创建场景如下：   </p>
+<p><code>var scene = new THREE.Scene();</code>   </p>
+<p>设置背景scene.background，可以为纯色，也可以为图片资源：</p>
+<p><code>scene.background = new THREE.Color(0xffffff)</code></p>
+<h4 id="2、相机camera"><a href="#2、相机camera" class="headerlink" title="2、相机camera"></a>2、相机camera</h4><p>THREE中的camera有三种，最常用的是远景相机，也就是人眼观察世界的模式，在相机拍摄的3D空间之外的物体不会被渲染。</p>
+<p><code>var camera = new THREE.PespectiveCamera(fov, aspect, near,far);</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fov</td>
+<td>number</td>
+<td>50</td>
+<td>视野角度</td>
+</tr>
+<tr>
+<td>aspect</td>
+<td>number</td>
+<td>1</td>
+<td>实际窗口的宽高比</td>
+</tr>
+<tr>
+<td>near</td>
+<td>number</td>
+<td>0.1</td>
+<td>相机到近平面的距离</td>
+</tr>
+<tr>
+<td>far</td>
+<td>number</td>
+<td>2000</td>
+<td>相机到远平面的距离</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3、初始化渲染器renderer"><a href="#3、初始化渲染器renderer" class="headerlink" title="3、初始化渲染器renderer"></a>3、初始化渲染器renderer</h4><p>创建一个WebGL渲染器，three.js还支持其他渲染器，但基本上只是用于回退处理不支持WebGL的旧式浏览器：</p>
+<p><code>var renderer = new THREE.WebGLRenderer({antialias: true})</code>   </p>
+<p>antialias属性开启用于抗锯齿。初始化渲染器有一些<a href="http://techbrood.com/threejs/docs/#%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/%E6%B8%B2%E6%9F%93%E5%99%A8&amp;#40Renderers&amp;#41/WebGL%E6%B8%B2%E6%9F%93%E5%99%A8&amp;#40WebGLRenderer&amp;#41" target="_blank" rel="noopener">其他参数</a>，一般不需要设置使用默认值即可。   </p>
+<h5 id="setSize-width-height-updateStyle"><a href="#setSize-width-height-updateStyle" class="headerlink" title="setSize(width, height, updateStyle)"></a>setSize(width, height, updateStyle)</h5><p>调整输出canvas尺寸（宽度，高度），通常设置为屏幕大小，若不是则需考虑设备像素比并设置视口（viewport）以匹配尺寸，updateStyle为true时，则显式添加像素输出canvas的样式中，默认为false。</p>
+<h5 id="setViewport-x-y-width-height"><a href="#setViewport-x-y-width-height" class="headerlink" title="setViewport(x, y, width, height)"></a>setViewport(x, y, width, height)</h5><p>设置视口，从(x, y)到(x+width, y+height)，<em> <strong>注意：</strong>此处的(x, y)是该区域的左下角 </em></p>
+<h5 id="renderer-domElement"><a href="#renderer-domElement" class="headerlink" title="renderer.domElement"></a>renderer.domElement</h5><p>渲染器renderer的domElement元素表示渲染器中的画布，通常需要将domElement挂载到body下面，渲染的结果就能正确显示了。   </p>
+<p><code>document.body.appendChild(renderer.domElement)</code>;   </p>
+<h5 id="setPixelRatio-value"><a href="#setPixelRatio-value" class="headerlink" title="setPixelRatio(value)"></a>setPixelRatio(value)</h5><p>设置设备像素比，用于HiDPI设备防止模糊输出canvas。</p>
+<p><code>renderer.setPixelRatio(window.devicePixelRatio)</code></p>
+<p>到这里，我们已经构建好了基本的“舞台”，就差“演员”上场了~</p>
+<hr>
+<h3 id="展示一个球体"><a href="#展示一个球体" class="headerlink" title="展示一个球体"></a>展示一个球体</h3><h4 id="1-创建物体"><a href="#1-创建物体" class="headerlink" title="1. 创建物体"></a>1. 创建物体</h4><h5 id="Mesh对象"><a href="#Mesh对象" class="headerlink" title="Mesh对象"></a>Mesh对象</h5><p>可以通过类似以下方式创建：   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var geometry = new THREE.SphereGeometry(15, 10, 10); /* 几何模型，用于定义结构 */</span><br><span class="line"></span><br><span class="line">var meterial = new THREE.MeshNormalMeterial(); /* 材质，用于定义外观 */</span><br><span class="line"></span><br><span class="line">var earth = new THREE.Mesh(geometry, meterial);</span><br></pre></td></tr></table></figure>
+<p>一个普通的物体对象的构成需要两个参数。</p>
+<ul>
+<li><strong>Geometry</strong>：在threejs中有两种几何体（基本几何体和buffer几何体）。<br><strong><em>基本几何体</em></strong> 是通过类来管理自身信息，比如顶点位置、颜色等，便于操作，用于创建经常变化的物体；<br><strong><em>buffer几何体</em></strong> 是用数组存储的，且保存在内存缓存区，减低对GPU的消耗，适用于一经创建就不需要修改的物体。<br>不同的集合</li>
+<li><strong>Meterial</strong>：不同材质的显示效果不同，可以在具体使用到的时候再进行查看，以下给出简单地描述，在需要使用的时候才去看具体的材质即可：   </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>材质</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Material</td>
+<td>材料基类</td>
+</tr>
+<tr>
+<td>MeshBasicMaterial</td>
+<td>基于深度着色的材质，由物体和相机的距离决定颜色，可以做出逐渐消失的效果</td>
+</tr>
+<tr>
+<td>MeshDepthMaterial</td>
+<td>渲染成简单的平面多边形，不考虑光照的影响</td>
+</tr>
+<tr>
+<td>MeshNormalMaterial</td>
+<td>计算法向量颜色的材质</td>
+</tr>
+<tr>
+<td>MeshLambertMaterial</td>
+<td>对光源做出反应，可用于创建暗淡的材质</td>
+</tr>
+<tr>
+<td>MeshPhongMaterial</td>
+<td>对光源做出反应，可用于创建光亮的材质</td>
+</tr>
+<tr>
+<td>MeshFaceMaterial</td>
+<td>为几何体的每一面指定材质，更像是一种材质容器</td>
+</tr>
+<tr>
+<td>THREE.SceneUtil.createMultiMaterialObject</td>
+<td>同时应用多种材质</td>
+</tr>
+<tr>
+<td>ShaderMaterial</td>
+<td>自己创建着色程序，需要通过GLSL语言</td>
+</tr>
+<tr>
+<td>LineBasicMaterial</td>
+<td>只能应用于THREE.Line</td>
+</tr>
+<tr>
+<td>LineDashedMaterial</td>
+<td>只能应用于THREE.Line</td>
+</tr>
+</tbody>
+</table>
+<p> 附：Meterial的<a href="http://techbrood.com/threejs/docs/#%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/%E6%9D%90%E6%96%99&amp;#40Materials\&amp;#41/%E6%9D%90%E6%96%99&amp;#40Material&amp;#41" target="_blank" rel="noopener">所有通用属性</a>，其中需要注意的有：   </p>
+<ul>
+<li>overdraw：解决绘制三角形时出现间隙，当设置为0.5时效果较好</li>
+</ul>
+<h4 id="2-添加到场景"><a href="#2-添加到场景" class="headerlink" title="2. 添加到场景"></a>2. 添加到场景</h4><p>将物体添加到场景中：   </p>
+<p><code>scene.add(earth);</code></p>
+<p>注意通过scene.add方法添加到场景的位置默认为原点(0,0,0)，此时跟相机位置是重叠的，需要移动一下相机的位置才能够看到物体。</p>
+<p><code>camera.position.z = 50;</code></p>
+<h4 id="3-渲染页面"><a href="#3-渲染页面" class="headerlink" title="3. 渲染页面"></a>3. 渲染页面</h4><p><code>renderer.render(scene, camera);</code>   </p>
+<p>这样我们就简单地渲染出了一个带有静态球体的场景，由于此处使用的材质只是一个颜色，所以添加了经纬线使他看起来更像球体。   </p>
+<hr>
+<p>通过上述步骤之后已经能够绘制一些简单的几何体，在实际项目中一般不会直接使用到这样的几何体，至少需要贴上一层纹理使之与实际世界中的物体更加相近。   </p>
+<h3 id="加载器Loaders"><a href="#加载器Loaders" class="headerlink" title="加载器Loaders"></a>加载器Loaders</h3><p>加载器是threejs中很重要的一个步骤，可以用于加载纹理/图片/模型/音频等资源，不同的loader对应不同格式的文件，loaders通用流程如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var loader = new THREE.[Loader]();</span><br><span class="line">/* </span><br><span class="line"> * 函数名：.load(url, onLoad, onProgress, onError)</span><br><span class="line"> * url：资源地址</span><br><span class="line"> * onLoad: 加载完成的回调，参数是已加载的资源文本</span><br><span class="line"> * onProgress: 加载中的调用，参数是XmlHttpRequest实例</span><br><span class="line"> * onError：加载出错时调用</span><br><span class="line">*/</span><br><span class="line">loader.load(url, onLoad, onProgress, onError)</span><br></pre></td></tr></table></figure></p>
+<h4 id="1-ImageLoader"><a href="#1-ImageLoader" class="headerlink" title="1. ImageLoader"></a>1. ImageLoader</h4><p>加载图片资源，可以作为纹理覆盖在物体上或者直接绘制在canvas上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var loader = new THREE.ImageLoader();</span><br><span class="line">loader.load(&apos;texture/earth.jpg&apos;, function( texture ) &#123;</span><br><span class="line">    // 作为纹理，或直接使用TextureLoader</span><br><span class="line">    // var geometry = new THREE.SphereGeometry(15, 10, 10);</span><br><span class="line">    // var meterial = new THREE.MeshBasicMaterial(&#123;color: 0x739783, map:texture&#125;);</span><br><span class="line">    // earth = new THREE.Mesh(geometry, material);</span><br><span class="line">    // scene.add(earth);</span><br><span class="line">    // 直接绘制在canvas上</span><br><span class="line">    var canvas =document.createElement(&apos;canvas&apos;);</span><br><span class="line">    var context = canvas.getContext(&apos;2d&apos;);</span><br><span class="line">    context.drawImage(texture, 100, 100);    </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-AudioLoader"><a href="#2-AudioLoader" class="headerlink" title="2. AudioLoader"></a>2. AudioLoader</h4><p>加载音乐也是常见的需求，加载音乐并播放的实现方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 初始化侦听器并添加到相机中</span><br><span class="line">var listener = new THREE.AudioListener();</span><br><span class="line">camera.add(listener);</span><br><span class="line">// 实例化一个音频对象并添加到场景中</span><br><span class="line">var audio = new THREE.audio( audioListener );</span><br><span class="line">scene.add(audio);</span><br><span class="line">// 加载资源</span><br><span class="line">var loader = new THREE.AudioLoader();</span><br><span class="line">loader.load( &apos;audio/amobient.ogg&apos;, function(audioBuffer) &#123;</span><br><span class="line">    audio.setBuffer(audioBuffer);</span><br><span class="line">    audio.play();</span><br><span class="line">&#125;,</span><br><span class="line">function(xhr) &#123;</span><br><span class="line">    console.log( (xhr.loaded / xhr.total * 100) + &quot;% is loaded&quot; );</span><br><span class="line">&#125;,</span><br><span class="line">function(xhr) &#123;</span><br><span class="line">    console.log(&apos;An error happened&apos;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>音频可以做到与场景相关，比如说做出3D音效，或者是让音乐可视化。在这里暂时不讨论，在之后使用到的时候再进行具体研究。</p>
+<h4 id="3-JSONLoader"><a href="#3-JSONLoader" class="headerlink" title="3. JSONLoader"></a>3. JSONLoader</h4><p>实际项目中的物体可能十分复杂，不可以简单地用几何体实现，3D模型导出的JSON文件即可以存放物体的模型，也可以存放其材质和动画信息。解析一个 JSON 结构的数据并返回一个 object ，包含解析后的 geometry 和 materials。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var loader = new THREE.JSONLoader();</span><br><span class="line">loader.load(</span><br><span class="line">    &apos;./monster/monster.js&apos;,</span><br><span class="line">    function (geometry, materials) &#123;</span><br><span class="line">        var material = new THREE.MultiMaterial(materials);</span><br><span class="line">        var object = new THREE.Mesh(geometry, material);</span><br><span class="line">        scene.add(object);</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>：使用加载的资源时，要适时渲染。</p>
+<hr>
+<h3 id="附表：对象的通用属性-函数"><a href="#附表：对象的通用属性-函数" class="headerlink" title="*附表：对象的通用属性/函数"></a>*<em>附表：对象的通用属性/函数</em></h3><p>以下给出3D对象的通用属性与函数，属性值可以直接通过console.log查看。   </p>
+<table>
+<thead>
+<tr>
+<th>属性函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td>决定对象相对于其父对象的位置，大部分情况下一个对象的父对象是THREE.Scene()对象</td>
+</tr>
+<tr>
+<td>rotation</td>
+<td>对象的局部旋转，单位为弧度</td>
+</tr>
+<tr>
+<td>scale</td>
+<td>控制对象的缩放</td>
+</tr>
+<tr>
+<td>up</td>
+<td>空间向上的方向，缺省是THREE.Vector3(0, 1, 0)</td>
+</tr>
+<tr>
+<td>translateX/ranslateY/ranslateZ(distance)</td>
+<td>沿X/Y/Z轴平移对象</td>
+</tr>
+<tr>
+<td>rotateX/rotateY/rotateZ(rad)</td>
+<td>沿X/Y/Z轴平移对象</td>
+</tr>
+<tr>
+<td>lookAt(vector)</td>
+<td>一个世界向量观察点，用于旋转模型以面对观察点</td>
+</tr>
+<tr>
+<td>add(object, …)</td>
+<td>添加object为该对象的子对象</td>
+</tr>
+<tr>
+<td>remove(object, …)</td>
+<td>删除object子对象</td>
+</tr>
+<tr>
+<td>clone(recursive)</td>
+<td>克隆对象，当recursive为true时（默认为true），对象的后代也会被克隆</td>
+</tr>
+</tbody>
+</table>
+<font color="#666"><br>以上属性可以通过<code>obj.[attr].x/obj.[attr].y/obj.[attr].z</code>来设置，或者是一次性设置3个值<code>obj.[attr].set(x, y, z)</code><br></font>   
+
+<hr>
+</div><div class="tags"><a href="/tags/threejs/">threejs</a></div><div class="post-nav"><a class="pre" href="/2018/09/24/threejs基础下：光照与贴图/">threejs基础下：光照与贴图</a><a class="next" href="/2018/08/10/React前置知识01：SASS和COMPASS/">React前置知识01：SASS和COMPASS</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/sass/" style="font-size: 15px;">sass</a> <a href="/tags/compass/" style="font-size: 15px;">compass</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/threejs/" style="font-size: 15px;">threejs</a> <a href="/tags/小项目/" style="font-size: 15px;">小项目</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/24/threejs基础下：光照与贴图/">threejs基础下：光照与贴图</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/24/threejs基础上：初始化与资源加载/">threejs基础上：初始化与资源加载</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/10/React前置知识01：SASS和COMPASS/">React前置知识01：SASS和COMPASS</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/10/vuepress搭建/">vuepress搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/08/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://10.187.139.235/" title="未知素" target="_blank">未知素</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Jinny Cai's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
