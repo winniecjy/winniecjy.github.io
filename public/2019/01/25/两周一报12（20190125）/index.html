@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="前端"><title>两周一报12（20190125） | Jinny Cai's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">两周一报12（20190125）</h1><a id="logo" href="/.">Jinny Cai's Blog</a><p class="description">生气了，一顿饭哄不好的那种。恩，要两顿。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">两周一报12（20190125）</h1><div class="post-meta">Jan 25, 2019<span> | </span><span class="category"><a href="/categories/weekly/">weekly</a></span></div><div class="post-content"><h2 id="一月行业动态"><a href="#一月行业动态" class="headerlink" title="一月行业动态"></a>一月行业动态</h2><h3 id="1-设计稿生成代码插件一览"><a href="#1-设计稿生成代码插件一览" class="headerlink" title="1. 设计稿生成代码插件一览"></a>1. 设计稿生成代码插件一览</h3><ul>
+<li>imgcook（淘宝）<ul>
+<li>功能：目前支持将sketch设计稿生成模块化的html+css代码，输出代码格式支持小程序/React/H5/Rax</li>
+<li>原理：参照图层结构分析+图像识别处理</li>
+<li>体验：<a href="https://imgcook.taobao.org/" target="_blank" rel="noopener">https://imgcook.taobao.org/</a></li>
+</ul>
+</li>
+<li>sketch2code（微软开源）<ul>
+<li>功能：将草图翻译为HTML代码</li>
+<li>原理：上传图片-&gt; 视觉模型预测图像中的html元素并标出位置 -&gt;文本识别预测元素中的文本 -&gt; 布局算法依据预测元素的边框信息生成网格结构 -&gt; 生成html代码</li>
+<li>体验：<a href="https://sketch2code.azurewebsites.net/" target="_blank" rel="noopener">https://sketch2code.azurewebsites.net/</a></li>
+</ul>
+</li>
+<li>Dapollo（蚂蚁金服）<ul>
+<li>功能：提供丰富的内置组件/图标/页面模板，且都有对应的开发代码，设计开发一体化。支持ios/Android/H5/小程序</li>
+<li>原理：sketch插件</li>
+<li>体验：<a href="https://oursketch.com/plugin/dapollo" target="_blank" rel="noopener">https://oursketch.com/plugin/dapollo</a></li>
+</ul>
+</li>
+<li>pix2code（理论性参考）<ul>
+<li>功能：AI参照UI图片生成代码</li>
+<li>原理：pix2code模型把单个的GUI截屏图片作为输入，基于卷积神经网络和循环升级网络产生计算机标签。</li>
+<li>体验：<a href="https://uizard.io/research/#pix2code上包含17年-18年关于这个模型的相关论文，可以看看其中的实验数据" target="_blank" rel="noopener">https://uizard.io/research/#pix2code上包含17年-18年关于这个模型的相关论文，可以看看其中的实验数据</a>   </li>
+</ul>
+</li>
+</ul>
+<h3 id="2-uni-app：基于vue开发跨平台应用的前端框架"><a href="#2-uni-app：基于vue开发跨平台应用的前端框架" class="headerlink" title="2. uni-app：基于vue开发跨平台应用的前端框架"></a>2. uni-app：基于vue开发跨平台应用的前端框架</h3><ul>
+<li>描述：DCloud公司开发，基于vuejs的跨平台框架（iOS/Android/H5/微信小程序/支付宝小程序/百度小程序）</li>
+<li>思考：看似很厉害，细看是个大杂烩全家桶，转小程序使用的是美团的mpvue框架，转移动应用使用的是dcloud之前推出的HTML5Plus引擎</li>
+<li>体验：<a href="https://uniapp.dcloud.io/" target="_blank" rel="noopener">https://uniapp.dcloud.io/</a>   </li>
+</ul>
+<h3 id="3-Bash简化常用命令"><a href="#3-Bash简化常用命令" class="headerlink" title="3. Bash简化常用命令"></a>3. Bash简化常用命令</h3><ul>
+<li>描述：用一个指令代替一连串的指令</li>
+<li>举例：上传代码到git，可以通过alias设置指令别名 alias gitpush= =’function _gitpush() {git add .; git commit -m $1; git push origin master;}; _gitpush’</li>
+<li>参考：<a href="https://medium.com/@raimibinkarim/9-bash-aliases-to-make-your-life-easier-3e5855aa95fa" target="_blank" rel="noopener">https://medium.com/@raimibinkarim/9-bash-aliases-to-make-your-life-easier-3e5855aa95fa</a>   </li>
+</ul>
+<h3 id="4-一句话动态"><a href="#4-一句话动态" class="headerlink" title="4. 一句话动态"></a>4. 一句话动态</h3><ul>
+<li>第13届D2前端技术论坛相关ppt已共享，后续会有相关视频分享，可以持续关注：<a href="https://www.yuque.com/d2forum/content/d213" target="_blank" rel="noopener">https://www.yuque.com/d2forum/content/d213</a></li>
+<li>第2届SEE Conf 2019蚂蚁金服体验科技大会，演讲视频与PPT：<a href="https://www.yuque.com/seeconf/content/kbnzac" target="_blank" rel="noopener">https://www.yuque.com/seeconf/content/kbnzac</a></li>
+<li>美团点评-2018前端技术年货：<a href="https://awps-assets.meituan.net/mit-x/2018-ebook-bundle3/2018-ebook-frontend.pdf" target="_blank" rel="noopener">https://awps-assets.meituan.net/mit-x/2018-ebook-bundle3/2018-ebook-frontend.pdf</a></li>
+<li>基于threejs的在线3D场景编辑器：<a href="https://tengge1.github.io/ShadowEditor-examples/" target="_blank" rel="noopener">https://tengge1.github.io/ShadowEditor-examples/</a></li>
+<li>一些css动效的整理，适合找找灵感   <ul>
+<li><a href="https://qishaoxuan.github.io/css_tricks/" target="_blank" rel="noopener">https://qishaoxuan.github.io/css_tricks/</a>   </li>
+<li><a href="https://chokcoco.github.io/CSS-Inspiration/#/" target="_blank" rel="noopener">https://chokcoco.github.io/CSS-Inspiration/#/</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="tags"><a href="/tags/周报/">周报</a></div><div class="post-nav"><a class="next" href="/2019/01/11/两周一报11（20190111）/">两周一报11（20190111）</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/lesson/">lesson</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/weekly/">weekly</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/sass/" style="font-size: 15px;">sass</a> <a href="/tags/compass/" style="font-size: 15px;">compass</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/threejs/" style="font-size: 15px;">threejs</a> <a href="/tags/小项目/" style="font-size: 15px;">小项目</a> <a href="/tags/周报/" style="font-size: 15px;">周报</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/25/两周一报12（20190125）/">两周一报12（20190125）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/11/两周一报11（20190111）/">两周一报11（20190111）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/28/两周一报10（20181228）/">两周一报10（20181228）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/14/两周一报09（20181214）/">两周一报09（20181214）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/两周一报08（20181130）/">两周一报08（20181130）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/两周一报07（20181116）/">两周一报07（20181116）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/02/两周一报06（20181102）/">两周一报06（20181102）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/21/两周一报05（20181021）/">两周一报05（20181021）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs问题集锦/">threejs问题集锦</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs进阶下：交互/">threejs进阶下：交互</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://10.187.139.235/" title="未知素" target="_blank">未知素</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Jinny Cai's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
