@@ -1,27 +1,68 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="前端"><title>threejs进阶下：交互 | Jinny Cai's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">threejs进阶下：交互</h1><a id="logo" href="/.">Jinny Cai's Blog</a><p class="description">生气了，一顿饭哄不好的那种。恩，要两顿。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">threejs进阶下：交互</h1><div class="post-meta">Oct 11, 2018<span> | </span><span class="category"><a href="/categories/lesson/">lesson</a></span></div><div class="post-content"><h3 id="Raycaster"><a href="#Raycaster" class="headerlink" title="Raycaster"></a>Raycaster</h3><p><code>THREE.Raycaster</code>是threejs中比较重要的一个类，可以用于物体选择和碰撞检测。实现原理是生成一条从显示的起点到重点的一条射线，检测与射线相交的物体集合。    </p>
-<h4 id="new-Raycaster-origin-direction-near-far"><a href="#new-Raycaster-origin-direction-near-far" class="headerlink" title="new Raycaster(origin, direction, near, far)"></a>new Raycaster(origin, direction, near, far)</h4><ul>
-<li>origin：光线投射的起点向量</li>
-<li>direction：光线投射的方向向量，归一化</li>
-<li>near：投射近点，用于限制光线的起点，不能为负，缺省为0</li>
-<li>far：投射远点，用于限制光线的终点，不能小于near，缺省为无穷大</li>
-</ul>
-<h4 id="setFromCamera-coords-camera"><a href="#setFromCamera-coords-camera" class="headerlink" title="setFromCamera(coords, camera)"></a>setFromCamera(coords, camera)</h4><p>用一个新的原点和方向向量来更新射线，参数说明如下。</p>
-<ul>
-<li><p>coords：鼠标的归一化二维坐标，归一化方法如下：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mouse.x = (e.clientX / window.innerWidth) * 2 -1;</span><br><span class="line">mouse.y = - (e.clientY / window.innerHeight) * 2 + 1;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>camera：射线起点处的相机，即把射线起点设置在该相机位置处</p>
-</li>
-</ul>
-<h4 id="intersectObject-object-recursive"><a href="#intersectObject-object-recursive" class="headerlink" title="intersectObject(object, recursive)"></a>intersectObject(object, recursive)</h4><p>检查射线和物体之间的交叉点，交叉点按距离排序返回，最接近为第一个，返回值为一个对象数组。</p>
-<ul>
-<li>object：用于检测和射线相交的物体</li>
-<li>recursive：若为true，则检查所有后代，否则只检查本身，缺省值为false</li>
-</ul>
-<h4 id="点击返回选中物体"><a href="#点击返回选中物体" class="headerlink" title="点击返回选中物体"></a>点击返回选中物体</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var raycaster = new THREE.Raycaster(origin, direction, near, far);</span><br><span class="line">mouse.x = (e.clientX / window.innerWidth) * 2 -1;</span><br><span class="line">mouse.y = - (e.clientY / window.innerHeight) * 2 + 1;</span><br><span class="line">raycaster.setFromCamera(mouse, camera);</span><br><span class="line">var intersects = raycaster.intersectObjects(locationGroup.children, true);</span><br></pre></td></tr></table></figure>
-<h4 id="碰撞检测"><a href="#碰撞检测" class="headerlink" title="碰撞检测"></a>碰撞检测</h4><p>原理是通过以物体中心为起点，向各个顶点发出射线，检测射线是否与其他物体相交，若相交则检查最近的一个交点与射线起点的距离，如果这个距离比物体中心到物体顶点的距离要小，则说明发生了碰撞。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 1. 获取物体中心点</span><br><span class="line">var originP = obj.position.clone(); </span><br><span class="line">for(var i=0; i&lt;obj.geometry.vertices.length; i++) &#123;</span><br><span class="line">    // 获取顶点坐标，将本地坐标乘以变换矩阵，得到了物体在世界坐标系中的值</span><br><span class="line">    var vertex = obj.geometry.vertices[i].clone().applyMatrix4(obj.matrix);</span><br><span class="line">    // 获取由中心指向顶点的向量</span><br><span class="line">    var directV = vertex.sub(obj.position);</span><br><span class="line">    // 方向向量归一化并发射射线</span><br><span class="line">    var ray = new Three.Raycaster(originP, directV.clone().normalize());</span><br><span class="line">    // 检测相交物体和距离</span><br><span class="line">    var collisionRes = ray.intersectObjects(collideMeshList, true);</span><br><span class="line">    if (collisionRes.length&gt;0 &amp;&amp; collisionRes[0].distance &lt; directV.length() ) &#123;</span><br><span class="line">        console.log(&apos;发生碰撞&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p><a href="https://blog.csdn.net/birdflyto206/article/details/52414382" target="_blank" rel="noopener">https://blog.csdn.net/birdflyto206/article/details/52414382</a></p>
-<h3 id="相机操作"><a href="#相机操作" class="headerlink" title="相机操作"></a>相机操作</h3><p>模型移动常常通过相机的移动来实现，常用的相机控件如下：   </p>
-<p>FirstPersonControls：第一人称控件，键盘移动，鼠标转动<br>FlyControls：飞行器模拟控件，键盘和鼠标来控制相机的移动和转动<br>RollControls：翻滚控件，FlyControls的简化版，可以绕z轴旋转<br>TrackballControls：轨迹球控件，用鼠标来轻松移动、平移和缩放场景<br>OrbitControls：轨道控件，在场景中绕某个对象旋转、平移<br>PathControls：路径控件，相机可以沿着预定义的路径移动。可以四处观看，但不能改变自身的位置</p>
-</div><div class="tags"><a href="/tags/threejs/">threejs</a></div><div class="post-nav"><a class="pre" href="/2018/10/11/threejs问题集锦/">threejs问题集锦</a><a class="next" href="/2018/10/11/threejs进阶上：动画/">threejs进阶上：动画</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/lesson/">lesson</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/weekly/">weekly</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/threejs/" style="font-size: 15px;">threejs</a> <a href="/tags/sass/" style="font-size: 15px;">sass</a> <a href="/tags/compass/" style="font-size: 15px;">compass</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/周报/" style="font-size: 15px;">周报</a> <a href="/tags/小项目/" style="font-size: 15px;">小项目</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/两周一报07（20181116）/">两周一报07（20181116）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/02/两周一报06（20181102）/">两周一报06（20181102）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/21/两周一报05（20181021）/">两周一报05（20181021）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs问题集锦/">threejs问题集锦</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs进阶下：交互/">threejs进阶下：交互</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs进阶上：动画/">threejs进阶上：动画</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs基础下：贴图资源加载与光照/">threejs基础下：贴图资源加载与光照</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs基础上：初始化/">threejs基础上：初始化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/05/两周一报04（20181005）/">两周一报04（20181005）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/23/两周一报03（20180923）/">两周一报03（20180923）</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://10.187.139.235/" title="未知素" target="_blank">未知素</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Jinny Cai's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+extends base
+
+block title
+  title= page.title + ' | ' + config.title
+
+block content
+  .post
+    h1.post-title= page.title
+    .post-meta= page.date.format('ll')
+      if page.categories.length > 0
+        span= ' | '
+        span.category
+          for category in page.categories.toArray()
+            a(href=url_for(category.path))= category.name
+      if theme.busuanzi == true
+        script(src='https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js', async)
+        span#busuanzi_container_page_pv= ' | '
+          span#busuanzi_value_page_pv
+          span= ' ' + __('Hits')
+      if theme.wordcount == true
+        include _partial/wordcount.pug
+    if theme.disqus
+      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
+    if theme.changyan
+      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
+        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
+        span= ' ' + __('Comment')
+      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
+    if theme.valine.enable
+      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
+        span.valine-comment-count(data-xid=url_for(page.path))
+        span= ' ' + __('Comment')
+    if page.toc
+      div(class='clear')
+        div(id='toc' class='toc-article')
+          div(class='toc-title')= __('contents')
+          != toc(page.content, {list_number: theme.toc_number})
+    .post-content
+      != page.content
+    if theme.donate.enable == true
+      iframe(src='/donate/?AliPayQR=' + theme.donate.alipay_qr + '&WeChatQR=' + theme.donate.wechat_qr + '&GitHub=' + theme.donate.github + '&BTCQR=' + theme.donate.btc_qr + '&BTCKEY='+ theme.donate.btc_key + '&PayPal=' + theme.donate.paypal_url, style='overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;', frameborder='0', scrolling='no')
+
+    if theme.post_copyright.enable == true
+      div
+        ul.post-copyright
+          li.post-copyright-author
+            strong= __('copyright_author_prefix')
+            = theme.post_copyright.author
+          li.post-copyright-link
+            strong= __('copyright_link_prefix')
+            a(href='/' + page.path)= page.permalink
+          li.post-copyright-license
+            strong= __('copyright_declare_prefix')
+            if theme.post_copyright.copyright_text
+              != theme.post_copyright.copyright_text
+            else
+              != __('copyright_default_text')
+      br
+
+    if theme.shareto == true
+      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
+      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
+
+    include _partial/tag.pug
+    include _partial/post_nav.pug
+
+    if page.comments
+      include _partial/comments.pug

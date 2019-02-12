@@ -1,32 +1,68 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="前端"><title>两周一报07（20181116） | Jinny Cai's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">两周一报07（20181116）</h1><a id="logo" href="/.">Jinny Cai's Blog</a><p class="description">生气了，一顿饭哄不好的那种。恩，要两顿。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">两周一报07（20181116）</h1><div class="post-meta">Nov 16, 2018<span> | </span><span class="category"><a href="/categories/weekly/">weekly</a></span></div><div class="post-content"><h3 id="一、项目总结"><a href="#一、项目总结" class="headerlink" title="一、项目总结"></a>一、项目总结</h3><ol>
-<li><strong>[已完成] 站内攻略高潮期问题总结</strong><ul>
-<li>此次数据查询请求数据量过大，测试提出在弱网络环境下有可能请求超时。 解决：提供一个网络超时toast，提升用户体验。   </li>
-<li>红包雨预约需要每个整点都可预约，每个整点的预约事件id必须不同，用户每次预约都只是预约了某一整点的红包雨。日历组件无法实现规律性的每隔多少时间就提醒一次的预约。</li>
-</ul>
-</li>
-<li><strong>[进行中] 测试机管理小程序</strong><ul>
-<li>描述：通过扫描每个手机专有的二维码借取/归还部门内测试机，提供个人手机及凹凸实验室测试机信息查询。</li>
-<li>进度： 50%，预计下周内完成</li>
-<li>问题：小程序提供的云数据库限制，设计的数据库结构效率较低</li>
-</ul>
-</li>
-</ol>
-<h3 id="二、本周学习"><a href="#二、本周学习" class="headerlink" title="二、本周学习"></a>二、本周学习</h3><ol>
-<li><p>小程序原生开发</p>
-<ul>
-<li>目录结构说明<br><img src="../../img/weekly/07/miniprogram.png" alt="小程序原生开发目录结构"> </li>
-<li>vscode插件辅助开发<br><strong>live sass compile</strong>：修改配置文件”extensionName”: “.wxss”，将sass实时打包为wxss。同理如果是习惯用less的，可以用Easy WXLESS。<br><strong>vscode weapp api</strong>：提供小程序API提示。<br><strong>vscode-wechat</strong>：wxml和wxss语法高亮支持，本来支持本地预览，但是这个插件目前没有维护，预览功能有bug。<br>sublime可参考<a href="https://www.jianshu.com/p/ec0f7c936f23" target="_blank" rel="noopener">https://www.jianshu.com/p/ec0f7c936f23</a>   </li>
-<li>注意点记录  <ul>
-<li>小程序是数据驱动开发，无法操作DOM   </li>
-<li>小程序是微信的内部应用，无法获取到window/document   </li>
-<li>云函数上传部署速度很慢，如果在云函数内调用了云数据库，需要上传部署并安装依赖，速度就更慢了，建议本地测试好函数再部署上去。   </li>
-<li>一次只能对一个数据表进行增删改查，如果需要多表关联查询，需要分多次操作。   </li>
-<li>数据表读写操作权限只有四种，注意无法实现所有人均可写数据。   </li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>闯关模式游戏，画画为最主要的互动元素，由玩家画出主角/武器，游戏的开发比较简单，互动方式比较新颖。<br>参考案例： <a href="http://zj.qq.com/money/ywl_game_halloween.htm" target="_blank" rel="noopener">http://zj.qq.com/money/ywl_game_halloween.htm</a><br><img src="../../img/weekly/07/draw2playQR.png" alt="demo QR"><br>做了一个简单的demo，实现主体功能，画画并显示到界面上：<br><img src="../../img/weekly/07/draw2play.gif" alt="demo show"></p>
-</li>
-</ol>
-</div><div class="tags"><a href="/tags/周报/">周报</a></div><div class="post-nav"><a class="next" href="/2018/11/02/两周一报06（20181102）/">两周一报06（20181102）</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/lesson/">lesson</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/weekly/">weekly</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/threejs/" style="font-size: 15px;">threejs</a> <a href="/tags/sass/" style="font-size: 15px;">sass</a> <a href="/tags/compass/" style="font-size: 15px;">compass</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/周报/" style="font-size: 15px;">周报</a> <a href="/tags/小项目/" style="font-size: 15px;">小项目</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/两周一报07（20181116）/">两周一报07（20181116）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/02/两周一报06（20181102）/">两周一报06（20181102）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/21/两周一报05（20181021）/">两周一报05（20181021）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs问题集锦/">threejs问题集锦</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs进阶下：交互/">threejs进阶下：交互</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs进阶上：动画/">threejs进阶上：动画</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs基础下：贴图资源加载与光照/">threejs基础下：贴图资源加载与光照</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs基础上：初始化/">threejs基础上：初始化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/05/两周一报04（20181005）/">两周一报04（20181005）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/23/两周一报03（20180923）/">两周一报03（20180923）</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://10.187.139.235/" title="未知素" target="_blank">未知素</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Jinny Cai's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+extends base
+
+block title
+  title= page.title + ' | ' + config.title
+
+block content
+  .post
+    h1.post-title= page.title
+    .post-meta= page.date.format('ll')
+      if page.categories.length > 0
+        span= ' | '
+        span.category
+          for category in page.categories.toArray()
+            a(href=url_for(category.path))= category.name
+      if theme.busuanzi == true
+        script(src='https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js', async)
+        span#busuanzi_container_page_pv= ' | '
+          span#busuanzi_value_page_pv
+          span= ' ' + __('Hits')
+      if theme.wordcount == true
+        include _partial/wordcount.pug
+    if theme.disqus
+      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
+    if theme.changyan
+      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
+        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
+        span= ' ' + __('Comment')
+      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
+    if theme.valine.enable
+      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
+        span.valine-comment-count(data-xid=url_for(page.path))
+        span= ' ' + __('Comment')
+    if page.toc
+      div(class='clear')
+        div(id='toc' class='toc-article')
+          div(class='toc-title')= __('contents')
+          != toc(page.content, {list_number: theme.toc_number})
+    .post-content
+      != page.content
+    if theme.donate.enable == true
+      iframe(src='/donate/?AliPayQR=' + theme.donate.alipay_qr + '&WeChatQR=' + theme.donate.wechat_qr + '&GitHub=' + theme.donate.github + '&BTCQR=' + theme.donate.btc_qr + '&BTCKEY='+ theme.donate.btc_key + '&PayPal=' + theme.donate.paypal_url, style='overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;', frameborder='0', scrolling='no')
+
+    if theme.post_copyright.enable == true
+      div
+        ul.post-copyright
+          li.post-copyright-author
+            strong= __('copyright_author_prefix')
+            = theme.post_copyright.author
+          li.post-copyright-link
+            strong= __('copyright_link_prefix')
+            a(href='/' + page.path)= page.permalink
+          li.post-copyright-license
+            strong= __('copyright_declare_prefix')
+            if theme.post_copyright.copyright_text
+              != theme.post_copyright.copyright_text
+            else
+              != __('copyright_default_text')
+      br
+
+    if theme.shareto == true
+      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
+      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
+
+    include _partial/tag.pug
+    include _partial/post_nav.pug
+
+    if page.comments
+      include _partial/comments.pug
