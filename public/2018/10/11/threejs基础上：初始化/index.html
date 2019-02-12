@@ -1,68 +1,179 @@
-extends base
-
-block title
-  title= page.title + ' | ' + config.title
-
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format('ll')
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-      if theme.wordcount == true
-        include _partial/wordcount.pug
-    if theme.disqus
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if theme.changyan
-      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
-        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
-        span= ' ' + __('Comment')
-      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
-    if theme.valine.enable
-      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
-        span.valine-comment-count(data-xid=url_for(page.path))
-        span= ' ' + __('Comment')
-    if page.toc
-      div(class='clear')
-        div(id='toc' class='toc-article')
-          div(class='toc-title')= __('contents')
-          != toc(page.content, {list_number: theme.toc_number})
-    .post-content
-      != page.content
-    if theme.donate.enable == true
-      iframe(src='/donate/?AliPayQR=' + theme.donate.alipay_qr + '&WeChatQR=' + theme.donate.wechat_qr + '&GitHub=' + theme.donate.github + '&BTCQR=' + theme.donate.btc_qr + '&BTCKEY='+ theme.donate.btc_key + '&PayPal=' + theme.donate.paypal_url, style='overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;', frameborder='0', scrolling='no')
-
-    if theme.post_copyright.enable == true
-      div
-        ul.post-copyright
-          li.post-copyright-author
-            strong= __('copyright_author_prefix')
-            = theme.post_copyright.author
-          li.post-copyright-link
-            strong= __('copyright_link_prefix')
-            a(href='/' + page.path)= page.permalink
-          li.post-copyright-license
-            strong= __('copyright_declare_prefix')
-            if theme.post_copyright.copyright_text
-              != theme.post_copyright.copyright_text
-            else
-              != __('copyright_default_text')
-      br
-
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
-
-    include _partial/tag.pug
-    include _partial/post_nav.pug
-
-    if page.comments
-      include _partial/comments.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="前端"><title>threejs基础上：初始化 | Jinny Cai's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">threejs基础上：初始化</h1><a id="logo" href="/.">Jinny Cai's Blog</a><p class="description">生气了，一顿饭哄不好的那种。恩，要两顿。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">threejs基础上：初始化</h1><div class="post-meta">Oct 11, 2018<span> | </span><span class="category"><a href="/categories/lesson/">lesson</a></span></div><div class="post-content"><p>Three.js是一个用于简化webGL编程的3D库，即使在不支持webGL的环境下也能做到优雅降级，以下教程将围绕构建这个地球DEMO来展开。   </p>
+<p>ThreeJs中最主要的有三个对象场景（scene）、相机（camera）、渲染器（renderer）。scene是布景空间，camera是拍摄镜头，render是用来将scene和camera生成的场景渲染到屏幕上，有了这三个对象才能将场景渲染到网页上去。   </p>
+<hr>
+<h3 id="初始化对象"><a href="#初始化对象" class="headerlink" title="初始化对象"></a>初始化对象</h3><h4 id="1、初始化场景scene"><a href="#1、初始化场景scene" class="headerlink" title="1、初始化场景scene"></a>1、初始化场景scene</h4><p>场景相当于是一个容器来容纳所有的物体，创建场景如下：   </p>
+<p><code>var scene = new THREE.Scene();</code>   </p>
+<p>设置背景scene.background，可以为纯色，也可以为图片资源：</p>
+<p><code>scene.background = new THREE.Color(0xffffff)</code></p>
+<h4 id="2、相机camera"><a href="#2、相机camera" class="headerlink" title="2、相机camera"></a>2、相机camera</h4><p>THREE中的camera有三种，最常用的是远景相机，也就是人眼观察世界的模式，在相机拍摄的3D空间之外的物体不会被渲染。</p>
+<p><code>var camera = new THREE.PespectiveCamera(fov, aspect, near,far);</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fov</td>
+<td>number</td>
+<td>50</td>
+<td>视野角度</td>
+</tr>
+<tr>
+<td>aspect</td>
+<td>number</td>
+<td>1</td>
+<td>实际窗口的宽高比</td>
+</tr>
+<tr>
+<td>near</td>
+<td>number</td>
+<td>0.1</td>
+<td>相机到近平面的距离</td>
+</tr>
+<tr>
+<td>far</td>
+<td>number</td>
+<td>2000</td>
+<td>相机到远平面的距离</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3、初始化渲染器renderer"><a href="#3、初始化渲染器renderer" class="headerlink" title="3、初始化渲染器renderer"></a>3、初始化渲染器renderer</h4><p>创建一个WebGL渲染器，可以通过插件<code>Detector.js</code>检测canvas/webgl兼容性，并在页面添加不兼容信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var renderer = null;</span><br><span class="line">if(Detector.webgl)</span><br><span class="line">    renderer = new THREE.WebGLRenderer(&#123;antialias: true&#125;)</span><br><span class="line">else if(Detector.canvas)</span><br><span class="line">    renderer = new THREE.CanvasRenderer()      </span><br><span class="line">else </span><br><span class="line">    console.log(&apos;不兼容&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>antialias属性开启用于抗锯齿。初始化渲染器有一些<a href="http://techbrood.com/threejs/docs/#%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/%E6%B8%B2%E6%9F%93%E5%99%A8%28Renderers%29/WebGL%E6%B8%B2%E6%9F%93%E5%99%A8%28WebGLRenderer%29" target="_blank" rel="noopener">其他参数</a>，一般不需要设置使用默认值即可。   </p>
+<h5 id="setSize-width-height-updateStyle"><a href="#setSize-width-height-updateStyle" class="headerlink" title="setSize(width, height, updateStyle)"></a>setSize(width, height, updateStyle)</h5><p>调整输出canvas尺寸（宽度，高度），通常设置为屏幕大小，若不是则需考虑设备像素比并设置视口（viewport）以匹配尺寸，updateStyle为true时，则显式添加像素输出canvas的样式中，默认为false。</p>
+<h5 id="setViewport-x-y-width-height"><a href="#setViewport-x-y-width-height" class="headerlink" title="setViewport(x, y, width, height)"></a>setViewport(x, y, width, height)</h5><p>设置视口，从(x, y)到(x+width, y+height)，<strong>*注意：</strong>此处的(x, y)是该区域的左下角*</p>
+<h5 id="renderer-domElement"><a href="#renderer-domElement" class="headerlink" title="renderer.domElement"></a>renderer.domElement</h5><p>渲染器renderer的domElement元素表示渲染器中的画布，通常需要将domElement挂载到body下面，渲染的结果就能正确显示了。   </p>
+<p><code>document.body.appendChild(renderer.domElement)</code>;   </p>
+<h5 id="setPixelRatio-value"><a href="#setPixelRatio-value" class="headerlink" title="setPixelRatio(value)"></a>setPixelRatio(value)</h5><p>设置设备像素比，用于HiDPI设备防止模糊输出canvas。</p>
+<p><code>renderer.setPixelRatio(window.devicePixelRatio)</code></p>
+<p>到这里，我们已经构建好了基本的“舞台”，就差“演员”上场了~</p>
+<hr>
+<h3 id="展示一个球体"><a href="#展示一个球体" class="headerlink" title="展示一个球体"></a>展示一个球体</h3><h4 id="1-创建物体"><a href="#1-创建物体" class="headerlink" title="1. 创建物体"></a>1. 创建物体</h4><h5 id="Mesh对象"><a href="#Mesh对象" class="headerlink" title="Mesh对象"></a>Mesh对象</h5><p>可以通过类似以下方式创建：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var geometry = new THREE.SphereGeometry(15, 10, 10); /* 几何模型，用于定义结构 */</span><br><span class="line">var meterial = new THREE.MeshNormalMeterial(); /* 材质，用于定义外观 */</span><br><span class="line">var earth = new THREE.Mesh(geometry, meterial);</span><br></pre></td></tr></table></figure></p>
+<p>一个普通的物体对象的构成需要两个参数。</p>
+<ul>
+<li><strong>Geometry</strong>：在threejs中有两种几何体（基本几何体和buffer几何体）。<br><strong><em>基本几何体</em></strong> 是通过类来管理自身信息，比如顶点位置、颜色等，便于操作，用于创建经常变化的物体；<br><strong><em>buffer几何体</em></strong> 是用数组存储的，且保存在内存缓存区，减低对GPU的消耗，适用于一经创建就不需要修改的物体。<br>不同的集合</li>
+<li><strong>Meterial</strong>：不同材质的显示效果不同，可以在具体使用到的时候再进行查看，以下给出简单地描述，在需要使用的时候才去看具体的材质即可：   </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>材质</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Material</td>
+<td>材料基类</td>
+</tr>
+<tr>
+<td>MeshBasicMaterial</td>
+<td>基于深度着色的材质，由物体和相机的距离决定颜色，可以做出逐渐消失的效果</td>
+</tr>
+<tr>
+<td>MeshDepthMaterial</td>
+<td>渲染成简单的平面多边形，不考虑光照的影响</td>
+</tr>
+<tr>
+<td>MeshNormalMaterial</td>
+<td>计算法向量颜色的材质</td>
+</tr>
+<tr>
+<td>MeshLambertMaterial</td>
+<td>对光源做出反应，可用于创建暗淡的材质</td>
+</tr>
+<tr>
+<td>MeshPhongMaterial</td>
+<td>对光源做出反应，可用于创建光亮的材质</td>
+</tr>
+<tr>
+<td>MeshFaceMaterial</td>
+<td>为几何体的每一面指定材质，更像是一种材质容器</td>
+</tr>
+<tr>
+<td>THREE.SceneUtil.createMultiMaterialObject</td>
+<td>同时应用多种材质</td>
+</tr>
+<tr>
+<td>ShaderMaterial</td>
+<td>自己创建着色程序，需要通过GLSL语言</td>
+</tr>
+<tr>
+<td>LineBasicMaterial</td>
+<td>只能应用于THREE.Line</td>
+</tr>
+<tr>
+<td>LineDashedMaterial</td>
+<td>只能应用于THREE.Line</td>
+</tr>
+</tbody>
+</table>
+<p> 附：Meterial的<a href="http://techbrood.com/threejs/docs/#%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/%E6%9D%90%E6%96%99%28Materials%29/%E6%9D%90%E6%96%99%28Material%29" target="_blank" rel="noopener">所有通用属性</a>，其中需要注意的有：   </p>
+<ul>
+<li>overdraw：解决绘制三角形时出现间隙，当设置为0.5时效果较好</li>
+</ul>
+<h4 id="2-添加到场景"><a href="#2-添加到场景" class="headerlink" title="2. 添加到场景"></a>2. 添加到场景</h4><p>将物体添加到场景中：   </p>
+<p><code>scene.add(earth);</code></p>
+<p>注意通过scene.add方法添加到场景的位置默认为原点(0,0,0)，此时跟相机位置是重叠的，需要移动一下相机的位置才能够看到物体。</p>
+<p><code>camera.position.z = 50;</code></p>
+<h4 id="3-渲染页面"><a href="#3-渲染页面" class="headerlink" title="3. 渲染页面"></a>3. 渲染页面</h4><p><code>renderer.render(scene, camera);</code>   </p>
+<p>这样我们就简单地渲染出了一个带有静态球体的场景，由于此处使用的材质只是一个颜色，所以添加了经纬线使他看起来更像球体。    </p>
+<hr>
+<h3 id="附表：对象的通用属性-函数"><a href="#附表：对象的通用属性-函数" class="headerlink" title="*附表：对象的通用属性/函数"></a>*<em>附表：对象的通用属性/函数</em></h3><p>以下给出3D对象的通用属性与函数，属性值可以直接通过console.log查看。</p>
+<table>
+<thead>
+<tr>
+<th>属性/函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td>决定对象相对于其父对象的位置，大部分情况下一个对象的父对象是THREE.Scene()对象</td>
+</tr>
+<tr>
+<td>rotation</td>
+<td>对象的局部旋转，单位为弧度</td>
+</tr>
+<tr>
+<td>scale</td>
+<td>控制对象的缩放</td>
+</tr>
+<tr>
+<td>up</td>
+<td>空间向上的方向，缺省是THREE.Vector3(0, 1, 0)</td>
+</tr>
+<tr>
+<td>translateX/ranslateY/ranslateZ(distance)</td>
+<td>沿X/Y/Z轴平移对象</td>
+</tr>
+<tr>
+<td>rotateX/rotateY/rotateZ(rad)</td>
+<td>沿X/Y/Z轴平移对象</td>
+</tr>
+<tr>
+<td>lookAt(vector)</td>
+<td>一个世界向量观察点，用于旋转模型以面对观察点</td>
+</tr>
+<tr>
+<td>add(object, …)</td>
+<td>添加object为该对象的子对象</td>
+</tr>
+<tr>
+<td>remove(object, …)</td>
+<td>删除object子对象</td>
+</tr>
+<tr>
+<td>clone(recursive)</td>
+<td>克隆对象，当recursive为true时（默认为true），对象的后代也会被克隆</td>
+</tr>
+</tbody>
+</table>
+<p>以上属性可以通过<code>obj.[attr].x/obj.[attr].y/obj.[attr].z</code>来设置，或者是一次性设置3个值<code>obj.[attr].set(x, y, z)</code> </p>
+</div><div class="tags"><a href="/tags/threejs/">threejs</a></div><div class="post-nav"><a class="pre" href="/2018/10/11/threejs基础下：贴图资源加载与光照/">threejs基础下：贴图资源加载与光照</a><a class="next" href="/2018/10/05/两周一报04（20181005）/">两周一报04（20181005）</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/lesson/">lesson</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/weekly/">weekly</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/threejs/" style="font-size: 15px;">threejs</a> <a href="/tags/sass/" style="font-size: 15px;">sass</a> <a href="/tags/compass/" style="font-size: 15px;">compass</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/小项目/" style="font-size: 15px;">小项目</a> <a href="/tags/周报/" style="font-size: 15px;">周报</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/两周一报07（20181116）/">两周一报07（20181116）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/02/两周一报06（20181102）/">两周一报06（20181102）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/21/两周一报05（20181021）/">两周一报05（20181021）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs问题集锦/">threejs问题集锦</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs进阶下：交互/">threejs进阶下：交互</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs进阶上：动画/">threejs进阶上：动画</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs基础下：贴图资源加载与光照/">threejs基础下：贴图资源加载与光照</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs基础上：初始化/">threejs基础上：初始化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/05/两周一报04（20181005）/">两周一报04（20181005）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/23/两周一报03（20180923）/">两周一报03（20180923）</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://10.187.139.235/" title="未知素" target="_blank">未知素</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Jinny Cai's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
