@@ -7,7 +7,7 @@ category: lesson
 
 ### 简单动画
 对于一些简单的动画，比如旋转/位置变换等等，可以直接使用`requestAnimationFrame`来进行重绘，示例：   
-```
+```JavaScript
 function render() {
     earth.rotation.y += 0.005;
     cloud.rotation.y += 0.003;
@@ -29,7 +29,7 @@ three.js提供了各种各样的模型加载器，但是这些加载器的完�
 
 ### 性能插件stats
 Three.js辅助库，显示性能帧数，每次刷新所用时间，占用内存。   
-```
+```JavaScript
 // 1. 引入插件
 <script src="../lib/stats.min.js"></script>
 

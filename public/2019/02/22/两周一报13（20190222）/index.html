@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="前端"><title>两周一报13（20190222） | Jinny Cai's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">两周一报13（20190222）</h1><a id="logo" href="/.">Jinny Cai's Blog</a><p class="description">生气了，一顿饭哄不好的那种。恩，要两顿。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">两周一报13（20190222）</h1><div class="post-meta">Feb 22, 2019<span> | </span><span class="category"><a href="/categories/weekly/">weekly</a></span></div><div class="post-content"><h2 id="行业动态"><a href="#行业动态" class="headerlink" title="行业动态"></a>行业动态</h2><ol>
+<li><p>fuse.js：轻量级模糊搜索插件   </p>
+<ul>
+<li>链接：<a href="https://fusejs.io/" target="_blank" rel="noopener">https://fusejs.io/</a></li>
+<li>关键词：轻量级（11KB），零依赖，模糊搜索</li>
+<li>应用：适合于小数据量的简单搜索，可依据匹配程度排序</li>
+</ul>
+</li>
+<li><p>3个值得期待的JavaScript新特性      </p>
+<ul>
+<li>链接：<a href="https://mp.weixin.qq.com/s/aM5vlKkka8GEFSFM222fNg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/aM5vlKkka8GEFSFM222fNg</a>   </li>
+<li><p>简述   </p>
+<ul>
+<li><p>可选运算符(Optional Chaining, stage-1)：简单的防止访问object时，由于数据结构不规范导致的报错。   </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = &#123;</span><br><span class="line">    user: &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(data.user?.address?.street); <span class="comment">// undefined</span></span><br><span class="line"><span class="comment">// 可替代以下写法</span></span><br><span class="line"><span class="comment">// const street = data &amp;&amp; data.user &amp;&amp; data.user.address &amp;&amp; data.user.address.street;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>空值合并(Nullish Coalescing, stage-1)：判断是否为<code>null</code>或<code>undefined</code>，可以在保护<code>0</code>，<code>false</code>，<code></code>的情况下，设置默认值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> val1 = <span class="literal">undefined</span>, val2 = <span class="literal">null</span>, val3 = <span class="number">0</span>, val4 = <span class="literal">false</span>, val5 = <span class="string">''</span>;</span><br><span class="line">val1 ?? <span class="string">'default value'</span>; <span class="comment">// val1 = 'default value'</span></span><br><span class="line">val2 ?? <span class="string">'default value'</span>; <span class="comment">// val2 = 'default value'</span></span><br><span class="line">val3 ?? <span class="string">'default value'</span>; <span class="comment">// val3 = 0</span></span><br><span class="line">val4 ?? <span class="string">'default value'</span>; <span class="comment">// val4 = false</span></span><br><span class="line">val5 ?? <span class="string">'default value'</span>; <span class="comment">// val5 = ''</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>管道运算符(The Pipeline Operator, stage-1)：链式调用函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> result = <span class="string">"hello"</span></span><br><span class="line">    |&gt; doubleSay</span><br><span class="line">    |&gt; capitalize</span><br><span class="line">    |&gt; exclaim;</span><br><span class="line"><span class="comment">// 替代以下写法</span></span><br><span class="line"><span class="comment">// result = exclaim(capitalize(doubleSay("hello")))</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li>常见的CSS图形绘制合集   <ul>
+<li>链接：<a href="https://www.zhangxinxu.com/wordpress/2019/01/pure-css-shapes/" target="_blank" rel="noopener">https://www.zhangxinxu.com/wordpress/2019/01/pure-css-shapes/</a></li>
+<li>以下均为CSS绘制的图形，具体实现可参照链接<br><img src="https://img10.360buyimg.com/imagetools/jfs/t1/18445/22/7664/76460/5c6fa789Eef5f2834/29d0c0d187e37344.jpg" alt="css图形">   </li>
+</ul>
+</li>
+</ol>
+<h2 id="近期问题记录"><a href="#近期问题记录" class="headerlink" title="近期问题记录"></a>近期问题记录</h2><ol>
+<li>页面<strong>视频资源会发出3次请求</strong>的原因<ul>
+<li>原因分析：<a href="https://www.zhangxinxu.com/wordpress/2018/12/video-moov-box/" target="_blank" rel="noopener">https://www.zhangxinxu.com/wordpress/2018/12/video-moov-box/</a></li>
+<li>简述：解释了一下页面中某些video资源会请求3次的原因，赶忙看了一下之前做的项目拉取视频也有这个问题，文章中修复方案实测有效。除此之外发现使用http链接，请求依旧会有2次，第一次请求的code为307，原因是后台做了强制https访问的限制（基于HSTS），改用https链接问题解决。</li>
+</ul>
+</li>
+<li><code>babel</code>舍弃了以前的<code>babel-*-*</code>的命名方式，7.x版本采用了<code>@babel/*-*</code>形式，使用7.x版本babel安装插件时需要注意对应。   </li>
+<li>animation动画安卓下卡顿？   <ul>
+<li>原因分析：修改width/height/margin，误差叠加</li>
+<li>解决：   <ul>
+<li>修改为transform，避免重排；</li>
+<li>修改为单一属性变化，减少误差；</li>
+<li>加入<code>transform: translateZ(0)</code>启动GPU加速</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="好玩的H5案例"><a href="#好玩的H5案例" class="headerlink" title="好玩的H5案例"></a>好玩的H5案例</h2><ol>
+<li>我的剪纸新年照<br> 分析：<a href="https://www.h5anli.com/cases/201902/chuanghua.html" target="_blank" rel="noopener">https://www.h5anli.com/cases/201902/chuanghua.html</a><br> h5链接：<a href="http://m.baconbuy.com/qq/paperCuts/" target="_blank" rel="noopener">http://m.baconbuy.com/qq/paperCuts/</a>     </li>
+<li>我家年夜饭（类似汪年全家福）<br> 分析：<a href="https://www.h5anli.com/cases/201902/pupupula.html" target="_blank" rel="noopener">https://www.h5anli.com/cases/201902/pupupula.html</a><br> h5链接：<a href="https://pupupula.net/nian/index.html?from=singlemessage" target="_blank" rel="noopener">https://pupupula.net/nian/index.html?from=singlemessage</a>     </li>
+</ol>
+<h2 id="关注学习ing"><a href="#关注学习ing" class="headerlink" title="关注学习ing"></a>关注学习ing</h2><ol>
+<li>Lottie<br><a href="https://airbnb.design/introducing-lottie/" target="_blank" rel="noopener">https://airbnb.design/introducing-lottie/</a><br><a href="http://test.imweb.io/topic/5b23a745d4c96b9b1b4c4efc" target="_blank" rel="noopener">http://test.imweb.io/topic/5b23a745d4c96b9b1b4c4efc</a></li>
+<li>parcel   <ul>
+<li>链接：<a href="http://www.itbaby.me/doc/parcel/" target="_blank" rel="noopener">http://www.itbaby.me/doc/parcel/</a>  </li>
+<li>关键词：web应用打包器，执行快，零配置</li>
+</ul>
+</li>
+<li>react devtools：<a href="https://github.com/facebook/react-devtools" target="_blank" rel="noopener">https://github.com/facebook/react-devtools</a><br>这个没啥，就是好工具，用上用上~   </li>
+<li>优化动画卡顿：近期正在整理输出相关文章</li>
+</ol>
+</div><div class="tags"><a href="/tags/周报/">周报</a></div><div class="post-nav"><a class="next" href="/2019/01/25/两周一报12（20190125）/">两周一报12（20190125）</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/lesson/">lesson</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/weekly/">weekly</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/threejs/" style="font-size: 15px;">threejs</a> <a href="/tags/小项目/" style="font-size: 15px;">小项目</a> <a href="/tags/周报/" style="font-size: 15px;">周报</a> <a href="/tags/sass/" style="font-size: 15px;">sass</a> <a href="/tags/compass/" style="font-size: 15px;">compass</a> <a href="/tags/react/" style="font-size: 15px;">react</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/02/22/两周一报13（20190222）/">两周一报13（20190222）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/25/两周一报12（20190125）/">两周一报12（20190125）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/11/两周一报11（20190111）/">两周一报11（20190111）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/28/两周一报10（20181228）/">两周一报10（20181228）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/14/两周一报09（20181214）/">两周一报09（20181214）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/两周一报08（20181130）/">两周一报08（20181130）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/两周一报07（20181116）/">两周一报07（20181116）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/02/两周一报06（20181102）/">两周一报06（20181102）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/21/两周一报05（20181021）/">两周一报05（20181021）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/threejs问题集锦/">threejs问题集锦</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://10.187.139.235/" title="未知素" target="_blank">未知素</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Jinny Cai's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

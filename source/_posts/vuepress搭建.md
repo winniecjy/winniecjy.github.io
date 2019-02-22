@@ -32,7 +32,7 @@ category: tools
     npx vuepress build
     ```
     为了防止以后忘记命令，建议在`package.json`中添加`scripts`脚本。
-    ```
+    ```JavaScript
     {
         "scripts": {
             "dev": "vuepress dev docs",
@@ -41,7 +41,7 @@ category: tools
     }
     ```
 3. 在上面两步之后就可以在本地查看部署效果了。现在还只是一个简单的markdown界面显示。做到像vuepress官网一样的界面还需要在`.vuepress`文件下添加配置文件`config.js`。以下代码简单的添加了标题、头部导航和侧边导航，具体可参照[官方文档](https://vuepress.docschina.org/config/)。  
-    ```
+    ```JavaScript
     module.exports = {
         base: '/gh-pages/', // github仓库名
         title: 'Hello VuePress', // 标题
@@ -68,13 +68,13 @@ category: tools
 4. 为了让这个系统能够在外部访问，可以借助github。
     - 建立好一个github仓库，如：https://github.com/jinglecjy/technical-docs，在`config.js`文件中添加`base: [仓库名]`  
     - 同步远程仓库到本地输出目录下`.vuepress/dist`  
-        ```
+        ```bash
         cd .vuepress/dist
         git init
         git pull -f
         ```
     - 将`dist`目录下的文件上传到github的gh-pages分支下`.vuepress/`  
-        ```
+        ```bash
         git add -A
         git commit -m 'deploy'
         git push -f git@github.com:jinglecjy/technical-docs.git master:gh-pages

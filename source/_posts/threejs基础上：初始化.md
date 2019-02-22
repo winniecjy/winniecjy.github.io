@@ -48,7 +48,7 @@ THREE中的camera有三种，最常用的是远景相机，也就是人眼观察
 
 #### 3、初始化渲染器renderer
 创建一个WebGL渲染器，可以通过插件`Detector.js`检测canvas/webgl兼容性，并在页面添加不兼容信息。   
-```
+```JavaScript
 var renderer = null;
 if(Detector.webgl)
     renderer = new THREE.WebGLRenderer({antialias: true})
@@ -98,7 +98,7 @@ antialias属性开启用于抗锯齿。初始化渲染器有一些[其他参数]
 ##### Mesh对象
 
 可以通过类似以下方式创建：   
-```
+```JavaScript
 var geometry = new THREE.SphereGeometry(15, 10, 10); /* 几何模型，用于定义结构 */
 var meterial = new THREE.MeshNormalMeterial(); /* 材质，用于定义外观 */
 var earth = new THREE.Mesh(geometry, meterial); 

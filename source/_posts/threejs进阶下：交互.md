@@ -21,7 +21,7 @@ category: lesson
 用一个新的原点和方向向量来更新射线，参数说明如下。
 
 - coords：鼠标的归一化二维坐标，归一化方法如下：
-    ``` 
+    ```JavaScript
     mouse.x = (e.clientX / window.innerWidth) * 2 -1;
     mouse.y = - (e.clientY / window.innerHeight) * 2 + 1;
     ```
@@ -33,7 +33,7 @@ category: lesson
 - recursive：若为true，则检查所有后代，否则只检查本身，缺省值为false
 
 #### 点击返回选中物体
-```
+```JavaScript
 var raycaster = new THREE.Raycaster(origin, direction, near, far);
 mouse.x = (e.clientX / window.innerWidth) * 2 -1;
 mouse.y = - (e.clientY / window.innerHeight) * 2 + 1;
@@ -43,7 +43,7 @@ var intersects = raycaster.intersectObjects(locationGroup.children, true);
 
 #### 碰撞检测
 原理是通过以物体中心为起点，向各个顶点发出射线，检测射线是否与其他物体相交，若相交则检查最近的一个交点与射线起点的距离，如果这个距离比物体中心到物体顶点的距离要小，则说明发生了碰撞。
-```
+```JavaScript
 // 1. 获取物体中心点
 var originP = obj.position.clone(); 
 for(var i=0; i<obj.geometry.vertices.length; i++) {
