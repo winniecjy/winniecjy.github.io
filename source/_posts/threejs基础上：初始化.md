@@ -3,6 +3,9 @@ title: threejs基础上：初始化
 date: 2018-10-11 21:15:23
 tags: threejs
 category: lesson
+toc: true
+comments: true
+description: threejs入门第一步
 ---
 
 Three.js是一个用于简化webGL编程的3D库，即使在不支持webGL的环境下也能做到优雅降级，以下教程将围绕构建这个地球DEMO来展开。   

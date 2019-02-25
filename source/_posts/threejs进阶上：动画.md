@@ -3,6 +3,9 @@ title: threejs进阶上：动画
 date: 2018-10-11 21:16:18
 tags: threejs
 category: lesson
+toc: true
+comments: true
+description: threejs动画
 ---
 
 ### 简单动画
