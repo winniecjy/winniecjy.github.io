@@ -20,8 +20,8 @@ comments: true
 ## <i id="param1"></i>一、实现效果
 ![效果图片](https://img13.360buyimg.com/imagetools/jfs/t29857/279/1583344553/266188/c4b33b93/5ce4fca2N40bc5de6.gif)   
 ![体验地址](https://img14.360buyimg.com/imagetools/jfs/t1/67216/40/2877/17289/5d11d9f2E323511f3/e4ea982897f63823.png)
-[源码地址(phaser2&phaser3)：https://github.com/jinglecjy/phaser-dadishu/](https://github.com/jinglecjy/phaser-dadishu/)   
-[体验地址：https://jinglecjy.github.io/phaser-dadishu/ver-phaser2/dist/](https://jinglecjy.github.io/phaser-dadishu/ver-phaser2/dist/)   
+[源码地址(phaser2&phaser3)：https://github.com/winniecjy/phaser-dadishu/](https://github.com/winniecjy/phaser-dadishu/)   
+[体验地址：https://winniecjy.github.io/phaser-dadishu/ver-phaser2/dist/](https://winniecjy.github.io/phaser-dadishu/ver-phaser2/dist/)   
 ## <i id="param2"></i>二、实现细节
 这个demo其实是之前学习phaser2的时候做的，现在用来改成phaser3，刚好可以接触一下新的API变动有多大。   
 按照游戏实现的逻辑顺序，下面捋一捋用到的Phaser3 API，同时也与Phaser2 API进行简单对比。     

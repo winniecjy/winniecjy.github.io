@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Joey Cai's Blog
+title: Winnie Cai's Blog
 subtitle: 生气了，一顿饭哄不好的那种。恩，要两顿。
 description: 前端
 keywords:
@@ -79,5 +79,5 @@ theme: maupassant
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/jinglecjy/jinglecjy.github.io.git
+  repo: https://github.com/winniecjy/winniecjy.github.io.git
   branch: master

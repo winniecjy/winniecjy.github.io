@@ -69,7 +69,7 @@ description: vuepress搭建过程记录
     }
     ```
 4. 为了让这个系统能够在外部访问，可以借助github。
-    - 建立好一个github仓库，如：https://github.com/jinglecjy/technical-docs，在`config.js`文件中添加`base: [仓库名]`  
+    - 建立好一个github仓库，如：https://github.com/winniecjy/technical-docs，在`config.js`文件中添加`base: [仓库名]`  
     - 同步远程仓库到本地输出目录下`.vuepress/dist`  
         ```bash
         cd .vuepress/dist
@@ -80,10 +80,10 @@ description: vuepress搭建过程记录
         ```bash
         git add -A
         git commit -m 'deploy'
-        git push -f git@github.com:jinglecjy/technical-docs.git master:gh-pages
+        git push -f git@github.com:winniecjy/technical-docs.git master:gh-pages
         ```
     - 在远程仓库`Settings -> Github Pages -> Source`设置为`gh-pages branch`，点击save。
-    - 这样就大功告成啦，效果：[DEMO](https://jinglecjy.github.io/technical-docs/)。
+    - 这样就大功告成啦，效果：[DEMO](https://winniecjy.github.io/technical-docs/)。
 ## 问题记录
 1. 不使用`README.md`作为名字时，按照官方文档部署网站之后总是跳转到默认的404页面？ 
 README.md 默认生成index.html为默认首页，不可更改。 

@@ -17,8 +17,8 @@ comments: true
 ```
 npm install jdc-popup -S
 ```
-github: https://github.com/jinglecjy/jdc-popup   
-demo: https://jinglecjy.github.io/jdc-popup/demo/   
+github: https://github.com/winniecjy/jdc-popup   
+demo: https://winniecjy.github.io/jdc-popup/demo/   
 ![](https://img11.360buyimg.com/imagetools/s200x200_jfs/t1/91021/5/7943/23039/5e00255bE34ea4ce4/da97ea669a8ccd64.png)
 
 ## 滑动穿透问题
