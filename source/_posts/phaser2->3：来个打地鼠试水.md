@@ -6,6 +6,7 @@ tags: [phaser, 小项目]
 category: notes
 toc: true
 comments: true
+description: 通过用phaser2和phaser3实现同一个简单的打地鼠游戏，实践感受版本变化。   
 ---
 
 > 本文中phaser具体版本

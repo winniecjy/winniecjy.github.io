@@ -5,6 +5,7 @@ tags: [工具, 记录]
 category: review
 toc: true
 comments: true
+description: 本地已存在node版本时，希望加入nvm和nrm管理。   
 ---
 ## 简短介绍
 nvm：node版本管理器，允许快速地在同一台设备上进行多个node版本之间切换。   

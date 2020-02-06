@@ -5,6 +5,7 @@ tags: [vue, 组件沉淀]
 category: vue组件
 toc: true
 comments: true
+description: vue弹窗组件实现要点，包括滑动穿透问题、多弹窗层级问题、兼容问题等等。
 ---
 ## 需求背景
 在做活动页面时经常需要实现各种各样的弹窗，有一些常见的问题需要处理，包含：   
