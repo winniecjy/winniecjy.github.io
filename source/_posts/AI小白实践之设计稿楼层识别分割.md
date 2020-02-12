@@ -1,7 +1,7 @@
 ---
-title: AI小白实践之设计稿楼层识别分割
+title: 初识AI之设计稿楼层识别分割
 date: 2020-02-06 18:00:00
-tags: [AI]
+tags: [AI, tensorflow]
 category: intensive study
 toc: true
 comments: true
