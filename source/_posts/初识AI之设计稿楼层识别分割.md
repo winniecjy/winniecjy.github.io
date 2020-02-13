@@ -1,5 +1,5 @@
 ---
-title: 初识AI之设计稿楼层识别分割
+title: 初识AI之设计稿楼层识别
 date: 2020-02-06 18:00:00
 tags: [AI, tensorflow]
 category: intensive study
@@ -508,17 +508,17 @@ modelOut[dim] = await tensor.data();
 
 
 ## 问题记录
-1. `ModuleNotFoundError: No module named 'nets'`    
+1. `ModuleNotFoundError: No module named 'nets'`       
 需要安装slim模块，如果借用`tensorflow/models`环境，则在`models/research/slim`目录下运行`python setup.py install`。另外需要将该模块暴露到环境中`export PYTHONPATH=$PYTHONPATH:pwd:pwd/slim`。其中pwd表示的是当前克隆目录，即research文件所在。            
-2. `ImportError: cannot import name 'preprocessor_pb2' from 'object_detection.protos'`
-需要` protoc object_detection/protos/*.proto --python_out=. `，参考https://github.com/tensorflow/models/issues/2930
-3. `ValueError: Unsupported Ops in the model before optimization LogSoftmax NonMaxSuppressionV5`
-python训练得到的模型不能百分百转换到tensorflowjs下运行，google到建议加入参数`--skip_op_check`，参考https://github.com/tensorflow/tfjs/issues/684，可以转化成功但是生成的模型有问题。   
+2. `ImportError: cannot import name 'preprocessor_pb2' from 'object_detection.protos'`   
+需要` protoc object_detection/protos/*.proto --python_out=. `，参考[issue2930](https://github.com/tensorflow/models/issues/2930)
+3. `ValueError: Unsupported Ops in the model before optimization LogSoftmax NonMaxSuppressionV5`   
+python训练得到的模型不能百分百转换到tensorflowjs下运行，参考[issue684](https://github.com/tensorflow/tfjs/issues/684)建议加入参数`--skip_op_check`，可以转化成功但是生成的模型有问题。   
 tensorflowjs有许多操作不支持，幸好刚刚更新的版本加入了NonMaxSuppressionV5支持，升级到1.5.2版本搞定。    
-4. python安装tensorflowjs最新版本失败
+4. python安装tensorflowjs最新版本失败   
 python版本过高的问题，官方建议版本为3.6.8。    
-5. 导出saved model的variables为空
-参考issue：https://github.com/tensorflow/models/issues/1988，修改`export.py`中`write_saved_model`函数。   
+5. 导出saved model的variables为空   
+参考[issue1988](https://github.com/tensorflow/models/issues/1988)，修改`export.py`中`write_saved_model`函数。   
           
 ## 参考
 [[1] Training Custom Object Detector](https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/training.html)   
