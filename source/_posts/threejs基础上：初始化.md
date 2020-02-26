@@ -2,7 +2,7 @@
 title: threejs基础上：初始化
 date: 2018-10-11 21:15:23
 tags: threejs
-category: lesson
+category: 教程
 toc: true
 comments: true
 description: threejs入门第一步

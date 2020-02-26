@@ -2,7 +2,7 @@
 title: 记录第一次typescript重构后端
 date: 2019-08-05 18:00:00
 tags: [数据分析工具项目, 项目复盘]
-category: review
+category: 复盘
 toc: true
 comments: true
 description: typescript使用心得

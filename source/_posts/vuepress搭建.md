@@ -2,7 +2,6 @@
 title: vuepress搭建
 date: 2018-08-10 19:13:12
 tags: 小项目
-category: tools
 toc: true
 comments: true
 description: vuepress搭建过程记录

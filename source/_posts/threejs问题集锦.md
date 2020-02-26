@@ -2,7 +2,7 @@
 title: threejs问题集锦
 date: 2018-10-11 21:45:32
 tags: threejs
-category: lesson
+category: 教程
 toc: true
 comments: true
 description: threejs问题集锦

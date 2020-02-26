@@ -2,7 +2,7 @@
 title: threejs基础下：贴图资源加载与光照
 date: 2018-10-11 21:16:01
 tags: threejs
-category: lesson
+category: 教程
 toc: true
 comments: true
 description: threejs加载器，贴图

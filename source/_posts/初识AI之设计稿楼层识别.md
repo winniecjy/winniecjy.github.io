@@ -2,7 +2,7 @@
 title: 初识AI之设计稿楼层识别
 date: 2020-02-06 18:00:00
 tags: [AI, tensorflow]
-category: intensive study
+category: 深入学习
 toc: true
 comments: true
 description: 从长设计稿上识别多个楼层进行分割，得出分割区域坐标。本文使用的深度学习工具为TensorFlow。主要通过改造官方例子，来训练自己的模型并测试效果，其中模型训练部分通过python实现，效果测试由前端页面展示。

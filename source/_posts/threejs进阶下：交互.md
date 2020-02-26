@@ -2,7 +2,7 @@
 title: threejs进阶下：交互
 date: 2018-10-11 21:16:51
 tags: threejs
-category: lesson
+category: 教程
 toc: true
 comments: true
 description: threejs用户交互

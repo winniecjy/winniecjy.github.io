@@ -2,7 +2,7 @@
 title: 记录之MAC环境下一次重新安装nvm和nrm
 date: 2019-09-05 18:00:00
 tags: [工具, 记录]
-category: review
+category: 复盘
 toc: true
 comments: true
 description: 本地已存在node版本时，希望加入nvm和nrm管理。   

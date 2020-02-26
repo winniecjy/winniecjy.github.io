@@ -3,7 +3,7 @@ layout: posts
 title: phaser2->3：来个打地鼠试水
 date: 2019-06-25 18:00:00
 tags: [phaser, 小项目]
-category: notes
+category: 深入学习
 toc: true
 comments: true
 description: 通过用phaser2和phaser3实现同一个简单的打地鼠游戏，实践感受版本变化。   
