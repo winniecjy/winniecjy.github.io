@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="前端"><title>React前置知识01：SASS和COMPASS | Winnie Cai's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">React前置知识01：SASS和COMPASS</h1><a id="logo" href="/.">Winnie Cai's Blog</a><p class="description">生气了，一顿饭哄不好的那种。恩，要两顿。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">React前置知识01：SASS和COMPASS</h1><div class="post-meta">Aug 10, 2018<span> | </span><span class="category"><a href="/categories/notes/">notes</a></span></div><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass与Compass"><span class="toc-number">1.</span> <span class="toc-text">Sass与Compass</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sass和-scss"><span class="toc-number">1.0.1.</span> <span class="toc-text">.sass和.scss</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass"><span class="toc-number">2.</span> <span class="toc-text">Sass</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sass安装及使用"><span class="toc-number">2.0.1.</span> <span class="toc-text">sass安装及使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sass语法介绍"><span class="toc-number">2.0.2.</span> <span class="toc-text">sass语法介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Compass"><span class="toc-number">3.</span> <span class="toc-text">Compass</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#compass安装及使用"><span class="toc-number">3.0.1.</span> <span class="toc-text">compass安装及使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#compass核心模块"><span class="toc-number">3.0.2.</span> <span class="toc-text">compass核心模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#compass其他知识"><span class="toc-number">3.0.3.</span> <span class="toc-text">compass其他知识</span></a></li></ol></li></div></div><div class="post-content"><h2 id="Sass与Compass"><a href="#Sass与Compass" class="headerlink" title="Sass与Compass"></a>Sass与Compass</h2><ol>
+<li>Compass是Sass基础上二次开发的工具。</li>
+<li><strong>优点</strong>：写出更优秀的CSS；解决CSS编写过程中的痛点问题（如精灵图合图等）；有效组织样式、图片、字体等项目元素。</li>
+<li><strong>应用场景</strong>：重构时自动化CSS；项目周期内更好组织项目内容。</li>
+</ol>
+<h4 id="sass和-scss"><a href="#sass和-scss" class="headerlink" title=".sass和.scss"></a>.sass和.scss</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .sass：类ruby语法，空格敏感</span></span><br><span class="line">h1</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#000</span></span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#fff</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// .scss：类css语法，花括号</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>: red;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Sass"><a href="#Sass" class="headerlink" title="Sass"></a>Sass</h2><h4 id="sass安装及使用"><a href="#sass安装及使用" class="headerlink" title="sass安装及使用"></a>sass安装及使用</h4><ol>
+<li>安装ruby和rvm（可选，用于版本管理）</li>
+<li>通过gem(ruby安装自带的一个包管理器)安装sass。  <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gem sources -l <span class="string">//</span> 显示当前的源</span><br><span class="line">gem sources <span class="params">--remove</span> <span class="string">...</span> <span class="string">//</span> 删除源<span class="string">...</span></span><br><span class="line">gem sources -a <span class="string">...</span> <span class="string">//</span> 添加源<span class="string">..</span></span><br><span class="line">gem install sass <span class="string">//</span> 安装sass</span><br><span class="line">gem install sass <span class="params">--version=3</span>.5.6 <span class="string">//</span> 安装版本为3.5.6的sass</span><br><span class="line">gem uninstall sass <span class="string">//</span> 卸载sass</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="sass语法介绍"><a href="#sass语法介绍" class="headerlink" title="sass语法介绍"></a>sass语法介绍</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sass main<span class="selector-class">.scss</span> main<span class="selector-class">.css</span> <span class="comment">// 编译成css文件</span></span><br><span class="line">sass-convert main<span class="selector-class">.scss</span> main<span class="selector-class">.sass</span> <span class="comment">// .sass和.scss</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>变量：存储一些后期可能会修改的通篇使用的量，如字体等等，一般放在文件头部；</p>
+ <figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">$headline</span>-ff: Braggadocio, Arial, Verdana, Helvetica, sans-serif;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件引入<code>@import</code>：类似于全局变量通常会单独放在一个文件中（_variables.scss）需要时通过<code>import</code>引入。</p>
+ <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">"variables"</span>;</span><br><span class="line"><span class="comment">// 多个import可用,分割</span></span><br><span class="line">@<span class="keyword">import</span> <span class="string">"variables"</span>, <span class="string">"compass/reset"</span>;</span><br></pre></td></tr></table></figure>
+<p> ==注意==：这里的<code>@import</code>并不是css原生的<code>@import</code>（缺点：CSS原生的<code>@import</code>必须要放在代码的最前边才能生效；当a.css引入了b.css，只有当浏览器将a下载下来，解析渲染时读到import时才回去下载b，此时浏览器处于阻塞过程，大大影响渲染时间，所以不建议使用）。sass在被编译时会将import的文件输出到相应的css文件，并且import指令可以放在任何地方。</p>
+ <figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">以下情况使用的是css原生<span class="keyword">import</span></span><br><span class="line"><span class="number">1</span>. 文件名为.css结尾</span><br><span class="line">@<span class="keyword">import</span> <span class="string">"variables.css"</span>;</span><br><span class="line"><span class="number">2</span>. <span class="string">"http://"</span>开头的字符串</span><br><span class="line">@<span class="keyword">import</span> <span class="string">"http://variables.css"</span>;</span><br><span class="line"><span class="number">3</span>. url()函数</span><br><span class="line">@<span class="keyword">import</span> url(<span class="string">"variables.css"</span>);</span><br><span class="line"><span class="number">4</span>. 跟有media queries</span><br><span class="line">@<span class="keyword">import</span> <span class="string">"variables"</span> projection tv;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>嵌套语法和父类选择器</p>
+ <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类的嵌套</span></span><br><span class="line"><span class="selector-class">.head</span> &#123;</span><br><span class="line">    <span class="selector-class">.content</span> &#123; <span class="attribute">color</span>: red; &#125;</span><br><span class="line">    &amp;:hover &#123; <span class="attribute">background</span>: green; &#125; <span class="comment">// 父类选择器&amp;</span></span><br><span class="line">    <span class="attribute">font</span>: &#123; // 属性嵌套</span><br><span class="line">        family: Arial;</span><br><span class="line">        size: <span class="number">16px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>变量操作</p>
+<ul>
+<li>操作方式<ul>
+<li>直接操作变量，即变量表达式；</li>
+<li>通过函数操作，函数包含以下几种：<ul>
+<li>functions：跟代码块无关的函数，多为内置函数</li>
+<li>可重用的代码块（类似于C中的宏macro）<ul>
+<li>使用时以复制拷贝的方式存在，称为mixin，通过@include调用</li>
+<li>使用时以组合声明的形式存在，通过@extend调用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>支持的运算操作符包含：<code>&lt;,&gt;,&lt;=,&gt;=,!=, ==, ()</code>。sass中的数值计算可以带单位，所以单位并不能混用。</li>
+<li>sass支持css3中添加的hsl功能，自动转换为16进制色值，解决了不兼容问题。</li>
+<li><p>mixin代码块的声明：一般放在页面顶部<code>@import</code>之后，或者单独抽离出一个文件，引入方法如下：  </p>
+  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">mixin</span> col-6 &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.webdemo</span> &#123;</span><br><span class="line">    @<span class="keyword">include</span> col-6();</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 一种可以实现但是不建议的方法，</span></span><br><span class="line"><span class="comment">// 规范建议类名最好有语义化的作用，而非视觉化</span></span><br><span class="line">@<span class="keyword">mixin</span> col-6 &#123;</span><br><span class="line">    <span class="selector-class">.col-6</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">        <span class="attribute">float</span>: left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">@<span class="keyword">include</span> col-6();</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 带参数的mixin, 50%为默认参数</span></span><br><span class="line">@<span class="keyword">mixin</span> col (<span class="variable">$width</span>: 50%) &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="variable">$width</span>;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>组合声明：以一种继承的形式来避免CSS的冗余。==工作原理是把继承者的选择器，插入到被继承者选择器所在的位置==。</p>
+  <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.error.<span class="class">instruction </span>&#123;</span><br><span class="line"><span class="symbol">    color:</span> <span class="meta">#0f0;</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">.<span class="class">error </span>&#123;</span><br><span class="line"><span class="symbol">    color:</span> <span class="meta">#f00;</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">.serious-<span class="class">error </span>&#123;</span><br><span class="line">    @extend .error;</span><br><span class="line"><span class="symbol">    border:</span> <span class="number">1</span>px <span class="meta">#f00;</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="params">&lt;div class="serious-error instruction"&gt;</span>serious<span class="params">&lt;/div&gt;</span> <span class="comment">// #0f0</span></span><br></pre></td></tr></table></figure>
+<p>  <strong>注意</strong>：extend不能继承选择器序列（即<code>@extend .A .B</code>不可行，会报错）；使用%可构建仅用于继承的选择器（<code>%name {...}</code>），不会出现在生成文件中。   </p>
+</li>
+</ul>
+</li>
+<li><p>sass中的媒体查询：sass中的media query可以内嵌在css规则中，在生成css的时候，media query才会被提到样式的最高层级。避免重复书写选择器，同时避免打乱样式表的流程。  </p>
+</li>
+<li><p>sass提供了非常好的嵌套能力，但是嵌套带来的副作用也是不可忽视的：</p>
+<ul>
+<li>浏览器解析css文件是按照从右往左的顺序。即对于<code>.main .headline</code>会先找到类名为headline的元素，然后再向上查找父级元素是否类名为main，否则继续向上直到查找到类名对应的元素或者html元素。这样导致渲染效率的低下；  </li>
+<li>增加了样式修饰的权重；</li>
+<li><p>制造了样式位置的依赖；  </p>
+<p>最佳实践是在命名的时候对类名进行语义化的命名，比如<code>.main-headline</code>，同时为了保留嵌套清晰易维护的优点，可以通过<code>at-root</code>指令指明将嵌套的内容输出到样式表顶层。   </p>
+</li>
+</ul>
+</li>
+<li><p>mixin的参数校验示例</p>
+ <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">mixin</span> col-sm (<span class="variable">$width</span>: 50%) &#123;</span><br><span class="line">    <span class="comment">/*输入校验*/</span></span><br><span class="line">    @<span class="keyword">if</span> type-of(<span class="variable">$width</span>) != number &#123;</span><br><span class="line">        @error <span class="string">"$width必须是一个数值类型，目前输入的width是#&#123;$width&#125;."</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    @<span class="keyword">if</span> not unitless(<span class="variable">$width</span>) &#123; <span class="comment">/* 没有单位 */</span></span><br><span class="line">        @<span class="keyword">if</span> unit(<span class="variable">$width</span>) != <span class="string">"%"</span> &#123;</span><br><span class="line">            @<span class="keyword">warn</span> <span class="string">"$width必须是一个百分值，目前输入的width是#&#123;$width&#125;."</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; @<span class="keyword">else</span> &#123;</span><br><span class="line">        @<span class="keyword">warn</span> <span class="string">"$width必须是一个百分值，目前输入的width是#&#123;$width&#125;."</span>;</span><br><span class="line">        <span class="variable">$width</span>: (percentage(<span class="variable">$width</span>) / <span class="number">100</span>); <span class="comment">/*数值变成百分号表示形式时会增加100倍*/</span></span><br><span class="line">    &#125;</span><br><span class="line">    @<span class="keyword">media</span> (min-width: 768px) &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="variable">$width</span>;</span><br><span class="line">        <span class="attribute">float</span>: left;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sass的四种输出格式<code>config.rb</code>中的<code>output_style</code>：</p>
+<ul>
+<li>expanded：默认，样式展开，与手动书写css习惯一致；</li>
+<li>nested：反映css样式修饰的html的结构，根据嵌套对应缩进样式；</li>
+<li>compact：将所有属性汇总到一行，关注选择器之间的关系，而非选择器内的属性；</li>
+<li>compressed：样式表压缩以占用最少的空间。</li>
+</ul>
+</li>
+<li><p>其他：<code>@each</code> <code>@for</code> <code>@while</code></p>
+</li>
+<li><p>常用网址</p>
+<ul>
+<li>Sass中的functions详情页：<a href="http://sass-lang.com/documentation/Sass/Script/Functions.html" target="_blank" rel="noopener">http://sass-lang.com/documentation/Sass/Script/Functions.html</a></li>
+<li>Sass和Compass必备技能之Sass篇（视频教程）：<a href="https://www.imooc.com/video/7155" target="_blank" rel="noopener">https://www.imooc.com/video/7155</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="Compass"><a href="#Compass" class="headerlink" title="Compass"></a>Compass</h2><h4 id="compass安装及使用"><a href="#compass安装及使用" class="headerlink" title="compass安装及使用"></a>compass安装及使用</h4><ol>
+<li>通过<code>gem install compass</code>即可安装成功</li>
+<li><p>Compass目录创建  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compass <span class="keyword">create</span> <span class="keyword">file</span>-<span class="keyword">name</span> // 初始化工作目录，<span class="keyword">file</span>-<span class="keyword">name</span>为生成的文件名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>目录结构  </p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sass：</span><br><span class="line">    -<span class="ruby"> <span class="number">_</span>*.scss：用于被其他sass文件引入，不会被单独编译</span></span><br><span class="line"><span class="ruby">    - *.scss：会被单独编译</span></span><br><span class="line"><span class="ruby">    注意：同一目录下，局部文件和非局部文件不能重名</span></span><br><span class="line"><span class="ruby">stylesheets：sass文件编译生成的css文件</span></span><br><span class="line"><span class="ruby">config.rb：配置项目文件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命令</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">compass <span class="keyword">compile</span> [path<span class="regexp">/to/</span><span class="keyword">project</span>] <span class="comment">// 按需编译</span></span><br><span class="line">compass watch [path<span class="regexp">/to/</span><span class="keyword">project</span>] <span class="comment">// 监听目录编译</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="compass核心模块"><a href="#compass核心模块" class="headerlink" title="compass核心模块"></a>compass核心模块</h4><p>CSS3、Helpers、Typography、Utilities模块通过<code>@import &quot;compass&quot;</code>就可以直接引入；而Reset和Layout模块需要分别通过<code>@import &quot;compass/reset&quot;</code>和<code>@import &quot;compass/layout</code>明确指定引入。  </p>
+<ul>
+<li>CSS3：跨浏览器的CSS3兼容能力  </li>
+<li>Helpers：内含多函数，比较少用到  </li>
+<li>Typography：修饰文本样式  </li>
+<li>Utilities：辅助工具模块，多为mixins  </li>
+<li>Reset：浏览器样式重置模块  </li>
+<li>Layout：提供对页面布局的控制 </li>
+</ul>
+<p>除了以上六大功能模块之外，还包含browser模块，用于配置compass默认支持的浏览器机器版本，该模块的配置会影响其他模块的输出。    </p>
+<ol>
+<li><p><strong>reset模块</strong><br> 所有包含的模块可见：<a href="http://compass-style.org/reference/compass/reset/utilities/" target="_blank" rel="noopener">http://compass-style.org/reference/compass/reset/utilities/</a><br> 可以通过调用mixins来调用不同的模块。   </p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如`nested-reset`用于重置页面下某个选择器的所有标签，方式如下：</span></span><br><span class="line"><span class="selector-class">.test</span> &#123;</span><br><span class="line">    <span class="variable">@include</span> nested-reset;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 也可以通过传参的方法，将某个选择器下的样式重置，方式如下：</span></span><br><span class="line"><span class="comment">// 第一个参数为选择器，第二个参数为是否强制覆盖（!important）</span></span><br><span class="line"><span class="variable">@include</span> reset-display(<span class="string">'.test'</span>, true);</span><br></pre></td></tr></table></figure>
+<p> ==使用normalize替代==</p>
+ <figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gem install compass-normalize <span class="comment"># 下载normalize</span></span><br><span class="line"><span class="built_in">require</span> <span class="string">'compass-normalize'</span> <span class="comment"># 在config.rb引入</span></span><br><span class="line"></span><br><span class="line">@import <span class="string">"normalize"</span>; <span class="comment"># 在scss文件中替换reset</span></span><br></pre></td></tr></table></figure>
+<p> normalize核心模块本身包含八个部分：</p>
+<ul>
+<li>base: body和html标签的字体文字大小边距等</li>
+<li>html5: 统一html5中新增的元素样式，如article、section的展现形式</li>
+<li>links: 统一a标签的展示形式，去掉hover和active时的下划线</li>
+<li>typography: 统一b, strong, h1, sub, sup等段落文本的样式修饰</li>
+<li>embeds: img, svg等</li>
+<li>groups: figure, pre, code等</li>
+<li>forms: form相关的button, input, textarea等</li>
+<li>tables: table相关table, td, th等<br>这八个部分可以通过子路径单独引入，如<code>@import &quot;normalize/base&quot;;</code>，通过子类引入的方法需要在前置位置添加<code>@import &quot;normalize-version&quot;;</code>。</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li><strong>layout模块</strong>（使用率低）<br><a href="http://compass-style.org/reference/compass/layout/" target="_blank" rel="noopener">http://compass-style.org/reference/compass/layout/</a><br>内部分了三大模块grid-background，sticky-footer，stretching。都可以通过子目录的方式如<code>@import &quot;compass/layout/grid-background&quot;</code>的方式显示引入。   <ul>
+<li>stretch：拉伸填充。通过<code>@include stretch(top, right, bottom, left)</code>调用，将元素拉伸填充屏幕，参数可缺省。  </li>
+<li>sticky-footer: 使页脚始终处于最底部。需符合一定的html结构（详见官网）。</li>
+<li>grid-background: 使用css3中的grid定宽定高自适应宽高   </li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li><strong>CSS3模块&amp;Browser Support 模块</strong>     <ul>
+<li><a href="http://compass-style.org/reference/compass/css3/" target="_blank" rel="noopener">CSS3模块</a>：封装了CSS3新属性，通过调用对应的新属性即可，如<code>@include box-shadow(1px 1px 2px 2px #aaa);</code>，可以自动添加浏览器前缀（除此之外，提供部分CSS3属性在IE下的兼容处理，如inline-block, opacity等）。</li>
+<li>Browser Support模块：通过<code>@import &quot;compass/support&quot;</code>可直接引入，实际上CSS3已引入了该模块。<ul>
+<li><code>browser()</code>：通过<code>@debug browser()</code>可显示出当前支持的浏览器；</li>
+<li><code>browser-version(&#39;chrome&#39;)</code>：显示当前对应浏览器考虑的所有版本；</li>
+<li><code>$supported-browsers: chrome firefox</code>：限制当前支持的浏览器；</li>
+<li><code>$browser-minmum-versions: (&quot;ie&quot;: &quot;8&quot;)</code>：通过键值对的方法限制最低支持的版本；</li>
+<li><code>$graceful-usage-threshold=0.1</code>：如果对于某个属性（若不支持仅仅影响美观度）在支持的浏览器中该属性的使用率达到了0.1%，则对其进行兼容。假如显式声明了兼容的浏览器版本，则不会根据该设置判断属性是否需要兼容。   </li>
+<li><code>$critical-usage-threshold=0.01</code>：如果对于某个属性（若不支持会导致页面混乱无法阅读等等较大问题）在支持的浏览器中该属性的使用率达到了0.01%，则对其进行兼容。假如显式声明了兼容的浏览器版本，则不会根据该设置判断属性是否需要兼容。      </li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="4">
+<li><p><strong>Typography模块</strong>   </p>
+<ul>
+<li>Links<ul>
+<li><code>@include hover-link();</code>：正常态下去掉下划线，在hover或者focus时才显示</li>
+<li><code>@include  link-colors(normal, hover, active, visited, focus)</code>：设置不同状态下的颜色值，只有第一个参数是必须参数</li>
+<li><code>@include unstyle-link()</code>：抹平超链接样式</li>
+</ul>
+</li>
+<li><p>Lists</p>
+<ul>
+<li><code>@include no-bullets()</code>： 去掉列表前的list-style，包含ul和li下</li>
+<li><code>@include no-bullet()</code>： 去掉单个li元素前的list-style</li>
+<li><code>@include inline-list()</code>：使得list横向布局，通过设置为<code>inline</code>实现</li>
+<li><code>@include horizontal-list(padding, float)</code>：使得list横向布局，通过float实现，第一个参数为padding值，第二个参数为float的方向。</li>
+<li><code>@include inline-block-list(padding)</code>：目的同上，通过设置li的display值为inline-block实现。</li>
+</ul>
+</li>
+<li><p>Text</p>
+<ul>
+<li><code>@include force-wrap()</code>：连续长文本强制换行（如url等）</li>
+<li><code>@include nowrap()</code>：连续长文本强制不换行，其实等同于<code>white-space: nowrap;</code></li>
+<li><code>@include ellipsis()</code>：文本超出容器宽度，在其后添加省略号，为了兼容firefox低版本，可通过安装<code>compass install ellipsis</code>，通过<code>$use-mozilla-ellipsis-binding: true;</code>开启对firefox低版本的支持。   </li>
+<li><code>@include hide-text()</code>：隐藏文本，text-indent实现</li>
+<li><code>@include squish-text()</code>：隐藏文本，通过font-size/opacity实现</li>
+<li><code>@include replace-text(url, bg-pos-x, bg-pos-y)</code>：设置背景图片</li>
+<li><code>@include replace-text-with-dimensions(本地图片地址)</code>：设置本地图片为背景，自动检测宽高使得容器大小与背景图片一致</li>
+</ul>
+</li>
+<li><p>Vertical Rhythm<br>  行内容间的留白，让所有文本元素的高度是基准高的整数倍   </p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="5">
+<li><strong>Helpers模块</strong><br>  Helpers中为函数，而不是mixins，不需要include，可以直接调用，其中的许多函数都于config.rb中的配置项对应。<ul>
+<li>Data URI：可以在Web 页面中包含图片但无需任何额外的HTTP 请求的一类URI（通过base64编码实现）。然而比直接使用图片资源相比要多使用50%的CPU资源，多4倍的内存，且不支持IE6/7。<code>background-image: inline-image(&#39;image.png&#39;)</code> 图片参数是相对于在cofig文件中设定的image目录设置的目录的相对路径。</li>
+<li><code>image-url(&#39;image.png&#39;)</code>：对于某些分布在CDN上的图片，后面常常跟着一个时间戳（cache buster）来标示这个图片更新的版本或者时间，对于CSS背景图片设置不友好，而且经常更改。image-url可以很好地解决这个问题，同时引用路径也只需要关注图片相对于配置的图片目录image_dir的相对路径。<code>stylesheet-url</code>和<code>font-url</code>用于管理指向CSS目录和font目录的资源文件路径，用法类似。   </li>
+<li><code>compass-env()</code>：compass编译环境，只有两个返回值development和production。</li>
+<li><code>image-width()</code>和<code>image-height()</code>：用于计算图片的宽和高   </li>
+<li><code>append-selector($selector, $to-append)</code>：将第二个参数叠加组合到第一个参数中生成学则器。    </li>
+</ul>
+</li>
+</ol>
+<ol start="6">
+<li><p><strong>Utilities模块</strong><br>Utilities模块主要是一些无法分类到其他模块中的功能，其中又分为5个类别：<code>Color</code>、<code>Print</code>、<code>Tables</code>、<code>General</code>、<code>Sprites</code>。</p>
+<ul>
+<li>Color<ul>
+<li><code>brightness($color)</code>：计算颜色的亮度</li>
+<li>contrasted($background-color, [$dark], [$light], [$threshold])：根据输入的bgColor自动生成background-color属性，并在输入的dark和light两个色值之间选取一个和背景颜色对比度更大的设为color属性。   </li>
+</ul>
+</li>
+<li>Print<br>  必须在两个文件中协同使用，<code>pirnt.scss</code>和<code>screen.scss</code>都需要引入print模块，主要是应用于适配打印设备。<ul>
+<li><code>print-utilities</code>：在<code>screen.scss</code>中调用需要传参<code>@include print-utilities(screen)</code>不传默认为<code>print.scss</code>中。</li>
+</ul>
+</li>
+<li>Tables<ul>
+<li><code>outer|inner-tables-borders($width, $color)</code>：分别用于设置table内外边框</li>
+<li><code>table-scaffolding()</code>：单元格文本对齐和padding初始化，<code>th</code>居中，<code>.numberic</code>右对齐。</li>
+<li><code>alternating-rows-and-columns($evenColor, $oddColor, $相邻两列颜色差值，$thColor, $tfootColor)</code>：对奇偶行|相隔列进行不同的颜色修饰。</li>
+</ul>
+</li>
+<li>General<br>  -<code>clearfix()</code>：通过在<code>.clearfix</code>中设置<code>overflow:hidden</code>清除浮动。<br>  -<code>legacy-pie-clearfix()</code>：通过伪类清除浮动。<br>  -<code>float($direction)</code>：根据配置设置是否启用对IE6的hack解决double float-margin bug。<br>  -<code>min-height|width($length)</code>：设置min-height/min-width，兼容IE。<br>  -<code>tag-cloud($baseFontSize)</code>：生成大小不同的字体，类名为xs,xxs, s, l, xl, xxl。</li>
+<li><p>Sprites<br>  主要是通过<code>sprite helpers</code>实现。</p>
+  <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="meta"><span class="meta-keyword">import</span> "compass/utilities/sprites;</span></span><br><span class="line">@<span class="meta"><span class="meta-keyword">import</span> "logo/*.png";</span>  <span class="comment">/* compass据此生成sass样式文件，默认不会存储在硬盘，可通过在控制台输入compass sprites "images/logo/*.png"生成文件查看，生成sprites */</span></span><br><span class="line">@<span class="meta"><span class="meta-keyword">include</span> all-logo-sprites();</span>   <span class="comment">/* 图片使用，中间的logo为目录名，只取路径的最后一个文件夹名 */</span></span><br></pre></td></tr></table></figure>
+<p>  图片引用的方法有两种，一个是直接在对应元素中添加对应类名<code>logo-imageName</code>；另一个则是通过<code>@include logo-sprite(&quot;imageName&quot;)</code>的方法。   </p>
+<ul>
+<li>对于button类型的图标，希望在hover, active等状态下使用不同的图片，可以通过在对图片命名为<code>imageName_hover.png</code>等，compass就会自动生成对应样式。可通过设置<code>$disable-magic-sprite-selectors:true</code>关闭该特性。</li>
+<li><code>$logo-layout: vertical|horizontal|diagonal|smart</code>：生成精灵图的布局方式设置。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="compass其他知识"><a href="#compass其他知识" class="headerlink" title="compass其他知识"></a>compass其他知识</h4><ol>
+<li>config.rb中<code>require &#39;compass/import-once/activate&#39;</code>：启用import-once，对于多次import同一文件只会引入一次，避免冗余。如果确实是需要多次引入，则可以通过 @import “compass/reset!”来引入后面的重复引用文件。  </li>
+<li>当使用<code>compressed</code>作为sass的输出格式时，默认会去掉所有注释文字。而对于一些必要的注释内容（如copy rights），可以通过如<code>/*! hahaha */</code>来避免被去除。</li>
+<li><code>@debug</code>可以在控制台显示出mixins函数等对应的输出，如<code>@debug browser()</code>显示出的当前compass支持的浏览器，类似于console.log()的功能；</li>
+<li>通过在控制台输入<code>compass interactive</code>可以进入console，直接调用mixins。   </li>
+<li>compass生成地址的时候，默认生成的都是绝对地址，认为<code>config.rb</code>所在的位置为根路径。假如有专门的服务器地址来存储相关的文件等，可以在config.rb中设置（http_path等），也可以通过relative_assets设置为true来生成相对路径。  </li>
+<li><code>compile compass -e production --force</code>：强制compass在production环境下编译，也可以在config.rb中配置<code>environment = :development</code>。   </li>
+<li>在选择器，字符串或SASS变量中如果需要引用函数，需要使用形如#{fn()}。</li>
+</ol>
+</div><div class="tags"><a href="/tags/sass/">sass</a><a href="/tags/compass/">compass</a><a href="/tags/react/">react</a></div><div class="post-nav"><a class="pre" href="/2018/08/26/两周一报01（20180826）/">两周一报01（20180826）</a><a class="next" href="/2018/08/10/vuepress搭建/">vuepress搭建</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue组件/">vue组件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/周报/">周报</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/复盘/">复盘</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/教程/">教程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/深入学习/">深入学习</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/概念/" style="font-size: 15px;">概念</a> <a href="/tags/sass/" style="font-size: 15px;">sass</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/phaser/" style="font-size: 15px;">phaser</a> <a href="/tags/小项目/" style="font-size: 15px;">小项目</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/组件沉淀/" style="font-size: 15px;">组件沉淀</a> <a href="/tags/threejs/" style="font-size: 15px;">threejs</a> <a href="/tags/周报/" style="font-size: 15px;">周报</a> <a href="/tags/compass/" style="font-size: 15px;">compass</a> <a href="/tags/性能优化/" style="font-size: 15px;">性能优化</a> <a href="/tags/AI/" style="font-size: 15px;">AI</a> <a href="/tags/tensorflow/" style="font-size: 15px;">tensorflow</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/记录/" style="font-size: 15px;">记录</a> <a href="/tags/数据分析工具项目/" style="font-size: 15px;">数据分析工具项目</a> <a href="/tags/项目复盘/" style="font-size: 15px;">项目复盘</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/事件循环：宏任务和微任务/">事件循环：宏任务和微任务</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/26/函数劫持/">函数劫持</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/06/初识AI之设计稿楼层识别/">初识AI之设计稿楼层识别</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/23/Vue组件库之Popup弹窗组件/">vue组件库之popup弹窗组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/19/算法应用之自定义公式计算/">算法应用之自定义公式计算</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/05/记录之MAC环境下一次重新安装nvm和nrm/">记录之MAC环境下一次重新安装nvm和nrm</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/05/记录第一次typescript重构后端/">记录第一次typescript重构后端</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/27/赶鸭子上架的全栈开发踩坑思考/">赶鸭子上架的全栈开发踩坑思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/25/phaser2->3：来个打地鼠试水/">phaser2->3：来个打地鼠试水</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/14/优化动画卡顿：卡顿原因分析及优化方案/">优化动画卡顿：卡顿原因分析及优化方案</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">Winnie Cai's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

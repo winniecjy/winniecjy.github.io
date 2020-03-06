@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="前端"><title>两周一报06（20181102） | Winnie Cai's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">两周一报06（20181102）</h1><a id="logo" href="/.">Winnie Cai's Blog</a><p class="description">生气了，一顿饭哄不好的那种。恩，要两顿。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">两周一报06（20181102）</h1><div class="post-meta">Nov 2, 2018<span> | </span><span class="category"><a href="/categories/周报/">周报</a></span></div><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、行业动态"><span class="toc-number">1.</span> <span class="toc-text">一、行业动态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、本周项目：M端站内攻略高潮期"><span class="toc-number">2.</span> <span class="toc-text">二、本周项目：M端站内攻略高潮期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、零散分享"><span class="toc-number">3.</span> <span class="toc-text">三、零散分享</span></a></li></ol></div></div><div class="post-content"><h3 id="一、行业动态"><a href="#一、行业动态" class="headerlink" title="一、行业动态"></a>一、行业动态</h3><ol>
+<li><strong>WebAssembly标准</strong><br>把除javascript外的编程语言转换为能在现代浏览器中运行的代码的技术，目的是和javascript结合用于开发大型web项目，提升性能。该标准受到了主流浏览器的支持（Firefox/Chrome/Safari/Edge），但是依据PSPDFKit对WebAssembly的实际测试，除了Firefox外的其他浏览器测试结果都不理想，有兴趣的同学可以看看PSPDFKit开源的WebAssembly测试基准，具体的测试效果如下：<br><img src="/images/weekly/06/webassembly.png" alt="webassembly性能测试"></li>
+<li><strong>小程序云开发</strong>    <ul>
+<li>描述：帮助开发者快速构建微信小程序的后端服务，提供了云函数、云数据库和云文件存储能力，并将这些能力封装成特定的接口，以wx.cloud.xx的形式调用。</li>
+<li>思考：<ul>
+<li>接口只能在小程序环境中调用，适用于逻辑简单的小程序开发。</li>
+<li>降低了开发门槛，弱化了后端在小程序开发中的作用，安全性和稳定性由官方保证。</li>
+</ul>
+</li>
+<li>来源：<a href="http://www.alloyteam.com/page/0/" target="_blank" rel="noopener">http://www.alloyteam.com/page/0/</a></li>
+</ul>
+</li>
+</ol>
+<h3 id="二、本周项目：M端站内攻略高潮期"><a href="#二、本周项目：M端站内攻略高潮期" class="headerlink" title="二、本周项目：M端站内攻略高潮期"></a>二、本周项目：M端站内攻略高潮期</h3><ol>
+<li>秒杀倒计时一开始的实现策略是setTimeout+定时更新服务器时间校准。后期发现当手机黑屏时，setTimeout也会随之终止。<br><strong>解决</strong>：初始时计算出本地时间与服务器时间的差值，然后以本地时间+差值作为当前时间，进行倒计时。同样定期更新服务器时间校准差值。</li>
+<li>榜单接口很不稳定，subsku字段经常不下发或者为空？<br><strong>解决</strong>：加入兜底方案，当返回的subsku少于3个时，选用下一个榜单，当少于3个榜单符合条件时隐藏楼层。</li>
+</ol>
+<h3 id="三、零散分享"><a href="#三、零散分享" class="headerlink" title="三、零散分享"></a>三、零散分享</h3><p>前段时间开始试着写threejs的文档，体会到写文档是一件很困难的事情，近期刚好看到一篇介绍怎么撰写技术文档的文章，有兴趣的同学可以看看详细内容~文章将技术文档分为了四类，分别介绍了撰写这四类文档的注意点，总结如下：   </p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>介绍</th>
+<th>要点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>教程（tutorial）</td>
+<td>1. 学习导向<br> 2. 适合入门<br> 3. 系列课程</td>
+<td>1. 边学边做，要让读者感受到立竿见影的效果<br> 2. 提供具体的可操作的步骤，减少抽象的概念和不必要的解释</td>
+</tr>
+<tr>
+<td>指导（guide）</td>
+<td>1. 目标导向<br> 2. 解决问题<br> 3. 分步骤</td>
+<td>1. 提供一系列的步骤达到具体的结果，目的是解决问题<br> 2. 不需要解释概念，解决方法具有一定的弹性，适用于不同场景<br> 3. 实用性优先，不需要面面俱到，比如说一些大部分都知道的操作可以直接省去</td>
+</tr>
+<tr>
+<td>解释（explanation）</td>
+<td>1. 理解导向<br> 2. 背景介绍</td>
+<td>1. 介绍项目背景环境<br> 2. 提供与同类型的对比，或者说是备选方案</td>
+</tr>
+<tr>
+<td>参考（reference）</td>
+<td>1. 信息导向<br> 2. 描述性<br> 3. 精确完整</td>
+<td>1. 文档结构与代码结构一致<br> 2. 整体的格式保持一致<br> 3. 只描述，不提供具体的应用，精确第一</td>
+</tr>
+</tbody>
+</table>
+<p>详情见<a href="https://www.divio.com/blog/documentation/，" target="_blank" rel="noopener">https://www.divio.com/blog/documentation/，</a> </p>
+</div><div class="tags"><a href="/tags/周报/">周报</a></div><div class="post-nav"><a class="pre" href="/2018/11/16/两周一报07（20181116）/">两周一报07（20181116）</a><a class="next" href="/2018/10/21/两周一报05（20181021）/">两周一报05（20181021）</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue组件/">vue组件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/周报/">周报</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/复盘/">复盘</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/教程/">教程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/深入学习/">深入学习</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/概念/" style="font-size: 15px;">概念</a> <a href="/tags/sass/" style="font-size: 15px;">sass</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/phaser/" style="font-size: 15px;">phaser</a> <a href="/tags/小项目/" style="font-size: 15px;">小项目</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/组件沉淀/" style="font-size: 15px;">组件沉淀</a> <a href="/tags/threejs/" style="font-size: 15px;">threejs</a> <a href="/tags/周报/" style="font-size: 15px;">周报</a> <a href="/tags/compass/" style="font-size: 15px;">compass</a> <a href="/tags/性能优化/" style="font-size: 15px;">性能优化</a> <a href="/tags/AI/" style="font-size: 15px;">AI</a> <a href="/tags/tensorflow/" style="font-size: 15px;">tensorflow</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/记录/" style="font-size: 15px;">记录</a> <a href="/tags/数据分析工具项目/" style="font-size: 15px;">数据分析工具项目</a> <a href="/tags/项目复盘/" style="font-size: 15px;">项目复盘</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/03/06/事件循环：宏任务和微任务/">事件循环：宏任务和微任务</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/26/函数劫持/">函数劫持</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/06/初识AI之设计稿楼层识别/">初识AI之设计稿楼层识别</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/23/Vue组件库之Popup弹窗组件/">vue组件库之popup弹窗组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/19/算法应用之自定义公式计算/">算法应用之自定义公式计算</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/05/记录之MAC环境下一次重新安装nvm和nrm/">记录之MAC环境下一次重新安装nvm和nrm</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/05/记录第一次typescript重构后端/">记录第一次typescript重构后端</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/27/赶鸭子上架的全栈开发踩坑思考/">赶鸭子上架的全栈开发踩坑思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/25/phaser2->3：来个打地鼠试水/">phaser2->3：来个打地鼠试水</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/14/优化动画卡顿：卡顿原因分析及优化方案/">优化动画卡顿：卡顿原因分析及优化方案</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">Winnie Cai's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
