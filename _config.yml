@@ -81,3 +81,7 @@ deploy:
   type: git
   repo: https://github.com/winniecjy/winniecjy.github.io.git
   branch: master
+
+# math
+mathjax:
+  enable: true
